@@ -25,62 +25,43 @@
             </ul>
      </div>
     </nav>
-    <!-- slider  -->
-    <div class="slider">
-        <ul class="slides">
-          <li>
-            <img src="https://lorempixel.com/580/250/nature/1"> <!-- random image -->
-            <div class="caption center-align">
-              <h3>This is our big Tagline!</h3>
-              <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
-              <a class="waves-effect waves-light btn">button</a>
+    <div id="bg-container">
+        <div class="form-container">
+            <div class="form">
+                <form action="login" id="login" name="login" method="post">
+                    <fieldset>
+                        <legend class="login-head">Login</legend>
+                        <p class="login-content">If you have an account with us, please login.</p>
+    
+                       <!-- email -->
+                        <div class="border-bottom">
+                            <label for="user" class="login-user">Email</label>
+                            <span class="login-icon"><i class="fas fa-user"></i></span>
+                            <input type="email" id="email" name="email" placeholder="Enter your Email address" size="20" class="input">
+                        </div>
+    
+                       <!-- password -->
+                        <div class="border-bottom">
+                            <label for="password" class="login-user">Password</label>
+                            <span class="login-icon"><i class="fas fa-key"></i></span>
+                            <input type="password" id="password" name="password" placeholder="password" size="20" class="input">
+                        </div>
+    
+                      <!-- forgot password -->
+                        <p class="right">
+                            <a href="#">Forgot password?</a>
+                        </p>
+                        <!-- login -->
+                        <button class="login-btn" type="submit">LOGIN</button>
+                    </fieldset>
+    
+                    <p class="login-content2">Are you new to StatsDash?
+                        <a href="/register">Register here</a>
+                    </p>
+                </form>
             </div>
-          </li>
-          <li>
-            <img src="https://lorempixel.com/580/250/nature/2"> <!-- random image -->
-            <div class="caption left-align">
-              <h3>Left Aligned Caption</h3>
-              <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
-            </div>
-          </li>
-          <li>
-            <img src="https://lorempixel.com/580/250/nature/3"> <!-- random image -->
-            <div class="caption right-align">
-              <h3>Right Aligned Caption</h3>
-              <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
-            </div>
-          </li>
-          <li>
-            <img src="https://lorempixel.com/580/250/nature/4"> <!-- random image -->
-            <div class="caption center-align">
-              <h3>This is our big Tagline!</h3>
-              <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
-            </div>
-          </li>
-        </ul>
-      </div>
-      <!-- Services and about section -->
-      <div class="container">
-          <div class="row">
-              <div class="four columns center-align">
-                  <!-- add icons here -->
-                  about about about about about about about about about about about about
-                  about about about about about about about about about about about about
-              </div>
-               <div class="four columns center-align">
-                   <!-- add icons here -->
-                  service service service service service service service service service 
-                  service service service service service service service service service 
-              </div>
-               <div class="four columns center-align">
-                   <!-- add icons here -->
-                  rkfjlweflgweilf
-              </div>
-          </div>
-      </div>
-      <br>
-      <br>
-      <br>
+        </div>
+    </div>   
 <!-- footer -->
       <footer class="page-footer indigo darken-4">
           <div class="container">

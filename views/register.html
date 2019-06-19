@@ -25,62 +25,46 @@
             </ul>
      </div>
     </nav>
-    <!-- slider  -->
-    <div class="slider">
-        <ul class="slides">
-          <li>
-            <img src="https://lorempixel.com/580/250/nature/1"> <!-- random image -->
-            <div class="caption center-align">
-              <h3>This is our big Tagline!</h3>
-              <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
-              <a class="waves-effect waves-light btn">button</a>
-            </div>
-          </li>
-          <li>
-            <img src="https://lorempixel.com/580/250/nature/2"> <!-- random image -->
-            <div class="caption left-align">
-              <h3>Left Aligned Caption</h3>
-              <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
-            </div>
-          </li>
-          <li>
-            <img src="https://lorempixel.com/580/250/nature/3"> <!-- random image -->
-            <div class="caption right-align">
-              <h3>Right Aligned Caption</h3>
-              <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
-            </div>
-          </li>
-          <li>
-            <img src="https://lorempixel.com/580/250/nature/4"> <!-- random image -->
-            <div class="caption center-align">
-              <h3>This is our big Tagline!</h3>
-              <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
-            </div>
-          </li>
-        </ul>
-      </div>
-      <!-- Services and about section -->
-      <div class="container">
-          <div class="row">
-              <div class="four columns center-align">
-                  <!-- add icons here -->
-                  about about about about about about about about about about about about
-                  about about about about about about about about about about about about
-              </div>
-               <div class="four columns center-align">
-                   <!-- add icons here -->
-                  service service service service service service service service service 
-                  service service service service service service service service service 
-              </div>
-               <div class="four columns center-align">
-                   <!-- add icons here -->
-                  rkfjlweflgweilf
-              </div>
-          </div>
-      </div>
-      <br>
-      <br>
-      <br>
+<!-- registration image on the left  -->
+<div id="register-container">
+    <section class="register-left-sideImage">
+    </section>
+<!-- registration form -->
+    <section class="register-right-side">
+        <form name="register" id="register" method="post" action="/register">
+            <fieldset>
+                <legend class="register-head">Create an account</legend>
+                <p class="register-content">Takes less than a minute</p>
+
+                <span class="register-input register-input-hoshi">
+                    <input type="text" id="username" name="username" size="20" class="register-input-field register-input-field-hoshi">
+                    <label for="username" class="register-input-label register-input-label-hoshi register-input-label-hoshi-color">
+                        <span class="register-input-label-content register-input-label-content-hoshi">Username:</span>
+                    </label>
+                </span>
+
+                <span class="register-input register-input-hoshi">
+                    <input type="email" id="email" name="email" size="20" class="register-input-field register-input-field-hoshi">
+                    <label for="email" class="register-input-label register-input-label-hoshi register-input-label-hoshi-color">
+                        <span class="register-input-label-content register-input-label-content-hoshi">Email:</span>
+                    </label>
+                </span>
+
+                <span class="register-input register-input-hoshi">
+                    <input type="password" id="password" name="password" size="20" class="register-input-field register-input-field-hoshi">
+                    <label for="phone" class="register-input-label register-input-label-hoshi register-input-label-hoshi-color">
+                        <span class="register-input-label-content register-input-label-content-hoshi">Password:</span>
+                    </label>
+                </span>
+
+                <div class="register-sign-up">
+                    <button class="register-sign-up-btn float-left" name="submitted" type="submit">Sign Up</button>
+                    <span><a href="/login">I am already a member</a></span>
+                </div>
+            </fieldset>
+        </form>
+    </section>
+</div>    
 <!-- footer -->
       <footer class="page-footer indigo darken-4">
           <div class="container">
