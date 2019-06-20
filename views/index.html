@@ -10,6 +10,8 @@
     <link rel="stylesheet" href="../public/assets/css/normalize.css">
     <link rel="stylesheet" href="../public/assets/css/skeleton.css">
     <link rel="stylesheet" href="../public/assets/css/style.css">
+    <!-- bootstrap cdn -->
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> -->
     <!-- material-icons -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
@@ -17,72 +19,44 @@
 <body>
     <!---- navbar --->
     <nav>
-     <div class="nav-wrapper indigo darken-4">
+     <div class="nav-wrapper pink darken-4">
         <a href="#!" class="brand-logo">StatsDash</a>
             <ul class="right hide-on-med-and-down">
-                <li><a href="sass.html"><i class="material-icons left">search</i>Dashboard</a></li>
-                <li><a href="badges.html"><i class="material-icons right">view_module</i>Register</a></li>
+                <li><a href="sass.html"><i class="material-icons left">view_module</i>Dashboard </a></li>
+                <li><a href="badges.html"><i class="material-icons right"></i> Register</a></li>
             </ul>
      </div>
     </nav>
-    <!-- slider  -->
-    <div class="slider">
-        <ul class="slides">
-          <li>
-            <img src="https://lorempixel.com/580/250/nature/1"> <!-- random image -->
-            <div class="caption center-align">
-              <h3>This is our big Tagline!</h3>
-              <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
-              <a class="waves-effect waves-light btn">button</a>
-            </div>
-          </li>
-          <li>
-            <img src="https://lorempixel.com/580/250/nature/2"> <!-- random image -->
-            <div class="caption left-align">
-              <h3>Left Aligned Caption</h3>
-              <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
-            </div>
-          </li>
-          <li>
-            <img src="https://lorempixel.com/580/250/nature/3"> <!-- random image -->
-            <div class="caption right-align">
-              <h3>Right Aligned Caption</h3>
-              <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
-            </div>
-          </li>
-          <li>
-            <img src="https://lorempixel.com/580/250/nature/4"> <!-- random image -->
-            <div class="caption center-align">
-              <h3>This is our big Tagline!</h3>
-              <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
-            </div>
-          </li>
-        </ul>
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+          <img src="/public/images/image1.jpg" alt="">
+        </div>
       </div>
-      <!-- Services and about section -->
-      <div class="container">
-          <div class="row">
-              <div class="four columns center-align">
-                  <!-- add icons here -->
-                  about about about about about about about about about about about about
-                  about about about about about about about about about about about about
-              </div>
-               <div class="four columns center-align">
-                   <!-- add icons here -->
-                  service service service service service service service service service 
-                  service service service service service service service service service 
-              </div>
-               <div class="four columns center-align">
-                   <!-- add icons here -->
-                  rkfjlweflgweilf
-              </div>
+      <!--Parallax-->
+      <div class="parallax-container">
+          <div class="parallax"><img src="../public/images/image1.jpg"></div>
+      </div>
+        <div class="section white">
+          <div class="row container">
+            <h2 class="header">About</h2>
+            <p class="grey-text text-darken-3 lighten-3">Parallax is an effect where the background content or image in this case, is moved at a different speed than the foreground content while scrolling.</p>
           </div>
-      </div>
-      <br>
-      <br>
-      <br>
+        </div>
+        <div class="parallax-container">
+          <div class="parallax"><img src="../public/images/image6.jpg"></div>
+        </div>
+        <div class="section white">
+            <div class="row container">
+              <h2 class="header">Services</h2>
+              <p class="grey-text text-darken-3 lighten-3">Parallax is an effect where the background content or image in this case, is moved at a different speed than the foreground content while scrolling.</p>
+            </div>
+        </div>
+        <div class="parallax-container">
+            <div class="parallax"><img src="../public/images/image5.jpg"></div>
+        </div>
+      
 <!-- footer -->
-      <footer class="page-footer indigo darken-4">
+      <!-- <footer class="page-footer pink darken-4">
           <div class="container">
             <div class="row">
               <div class="col l6 s12">
@@ -99,22 +73,22 @@
                 </ul>
               </div>
             </div>
-          </div>
-          <div class="footer-copyright">
+          </div> -->
+          <!-- <div class="footer-copyright">
             <div class="container">
             © 2019 Copyright Text
             <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
             </div>
           </div>
-        </footer>
+        </footer> -->
             
 
 <!-- jquery library -->
 <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="crossorigin="anonymous"></script>
 <script>
-// for the slider
+// for the parallax
 $(document).ready(function(){
-    $('.slider').slider();
+    $('.parallax').parallax();
   });
 </script>
 
