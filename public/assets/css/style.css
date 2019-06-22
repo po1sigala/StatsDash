@@ -1,14 +1,38 @@
-/* body {
-    background: black;
-    color: white;
-} */
+/* nav */
+.brand-logo{
+    margin-left: 15px;
+}
+.material-icons left {
+    font-size: 15px;
+}
 /* Registration */
+#register-container {
+    display: flex;
+}
 .register-left-side {
-    background-image: url(/public/images/image3.jpg);
+    background-image: url(StatsDash/public/images/image6.jpg);
     width: 50%;
     position: relative;
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
     display: flex;
+    min-height: 100vh;
+    justify-content: center;
 }
+.register-right-side {
+    background: black;
+    height: 100vh;
+    position: relative;
+    width: 50%;
+    color: white;
+    padding: 120px 120px 100px 120px;
+}
+
+/* homepage */
+.black {
+    color: black;
+}
+/* .white-text {
+    font-color
+} */
