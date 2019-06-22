@@ -1,0 +1,26 @@
+{
+  "name": "StatsDash",
+  "version": "1.0.0",
+  "description": "Full stack web application using JavaScript, Node, SQL, axios, ajax, to provide in depth player statistics for all your favorite sports players and teams.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/po1sigala/StatsDash.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/po1sigala/StatsDash/issues"
+  },
+  "homepage": "https://github.com/po1sigala/StatsDash#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "express-handlebars": "^3.1.0",
+    "mysql": "^2.17.1"
+  }
+}
