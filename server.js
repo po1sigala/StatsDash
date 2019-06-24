@@ -1,7 +1,7 @@
 // requires express
 const express = require("express");
 // sets port
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 3000;
 // creating an express server
 const app = express();
 // requires handlebars
