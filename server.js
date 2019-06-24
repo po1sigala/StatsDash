@@ -19,6 +19,10 @@ app.get("/register", (req,res)=> {
     res.render("register", {title: "Register"});
 });
 
+app.get("/dashboard", (req, res)=> {
+    res.render("dashboard");
+});
+
 app.get("*", (req, res)=> {
     res.render("index");
 });
