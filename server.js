@@ -1,7 +1,9 @@
 // requires express
 const express = require("express");
+// allows access to info in .env file
+require("dotenv").config();
 // sets port
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT;
 // creating an express server
 const app = express();
 // requires handlebars
