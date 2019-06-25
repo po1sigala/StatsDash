@@ -16,20 +16,7 @@
 </head>
 <body>
     <!---navbar --->
-    <nav>
-     <div class="nav-wrapper grey darken-3">
-        <a href="#!" class="brand-logo">StatsDash</a>
-            <ul class="right hide-on-med-and-down">
-                <li><a href="sass.html"><i class="material-icons left">view_module</i>Dashboard </a></li>
-                <li><a href="badges.html"><i class="material-icons right"></i> Register</a></li>
-            </ul>
-     </div>
-    </nav>
-    <!-- <div class="jumbotron jumbotron-fluid"> -->
-        {{!-- <div class="container">
-          <img src="/images/image1.jpg" alt="">
-        </div> --}}
-      <!-- </div> -->
+    {{>header}}
       <!--Parallax-->
       <div class="parallax-container">
           <div class="parallax"><img src="/images/image1.jpg"></div>
@@ -54,7 +41,7 @@
         </div>
       
 <!-- footer -->
-      <footer class="page-footer grey darken-3">
+      <footer class="page-footer grey darken-2">
           <div class="container">
             <div class="row">
               <div class="col l6 s12">
@@ -88,6 +75,8 @@
           </div>
         </footer> 
             
+        {{>footer}}
+
 
 <!-- jquery library -->
 <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="crossorigin="anonymous"></script>
