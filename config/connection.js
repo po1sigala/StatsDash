@@ -4,7 +4,7 @@ var mysql = require("mysql");
 require("dotenv").config();
 
 // make the code refer to .env file in order to get the password
-var password = process.env.db_password;
+
 
 // create the connection information for the sql database
 // var connection = mysql.createConnection({
@@ -30,6 +30,6 @@ var password = process.env.db_password;
       throw err;
     }
 
-    console.log("MySQL is connected");
+    console.log("MySQL is connected as id " + connection.threadId);
   });
   
