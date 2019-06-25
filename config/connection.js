@@ -25,11 +25,5 @@ require("dotenv").config();
 
   var connection = mysql.createConnection(process.env.MYSQL_CONNECTION);
 
-  connection.connect(function(err) {
-    if (err) {
-      throw err;
-    }
-
-    console.log("MySQL is connected as id " + connection.threadId);
-  });
+  module.exports = connection;
   

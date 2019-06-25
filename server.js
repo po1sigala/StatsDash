@@ -1,5 +1,6 @@
 // requires express
 const express = require("express");
+const connection = require('./config/connection');
 // allows access to info in .env file
 require("dotenv").config();
 // sets port
@@ -31,7 +32,14 @@ app.get("*", (req, res)=> {
     res.render("index");
 });
 
-// starts our server
-app.listen(PORT, function(){
-    console.log("App listening on PORT: " + PORT);
+connection.connect(function(err) {
+    if (err) {
+      throw err;
+    }
+
+    console.log("MySQL is connected as id " + connection.threadId);
+    app.listen(PORT, function(){
+        console.log("App listening on PORT: " + PORT);
+    });
 });
+// starts our server
