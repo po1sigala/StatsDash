@@ -31,3 +31,11 @@ CREATE TABLE playersBio(
     draftStatus VARCHAR(50),
     PRIMARY KEY(id)
 );
+
+CREATE TABLE users
+(
+	id INT NOT NULL AUTO_INCREMENT,
+	username VARCHAR(16) NOT NULL,
+    password VARCHAR(220) NOT NULL,
+	PRIMARY KEY (id)
+);
