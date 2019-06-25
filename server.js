@@ -28,6 +28,10 @@ app.get("/dashboard", (req, res)=> {
     res.render("dashboard");
 });
 
+app.get("/login", (req, res)=> {
+    res.render("login");
+});
+
 app.get("*", (req, res)=> {
     res.render("index");
 });
