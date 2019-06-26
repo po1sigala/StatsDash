@@ -2,10 +2,10 @@
 const express = require("express");
 const connection = require('./config/connection');
 // get all the tools we need for authentication 
-var session  = require('express-session');
-var cookieParser = require('cookie-parser');
-var bodyParser = require('body-parser');
-var morgan = require('morgan');
+const session  = require('express-session');
+const cookieParser = require('cookie-parser');
+const bodyParser = require('body-parser');
+const morgan = require('morgan');
 // allows access to info in .env file
 require("dotenv").config();
 
