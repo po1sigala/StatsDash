@@ -29,8 +29,6 @@ const exphbs = require("express-handlebars");
 app.engine("handlebars", exphbs({ defaultLayout: "main"}));
 app.set("view engine", "handlebars");
 
-app.use(express.static("public"));
-
 // set up our express application
 app.use(morgan('dev')); // log every request to the console
 app.use(cookieParser()); // read cookies (needed for auth)
@@ -48,28 +46,6 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions
 app.use(flash()); // use connect-flash for flash messages stored in session
-
-
-// routing
-app.get("/", (req, res)=> {
-    res.render("index", {title: "Home Page"});
-});
-
-app.get("/register", (req,res)=> {
-    res.render("register", {title: "Register"});
-});
-
-app.get("/profile", (req, res)=> {
-    res.render("dashboard");
-});
-
-app.get("/login", (req, res)=> {
-    res.render("login");
-});
-
-app.get("*", (req, res)=> {
-    res.render("index");
-});
 
 require('./app/routes.js')(app, passport); // load our routes and pass in our app and fully configured passport
 
