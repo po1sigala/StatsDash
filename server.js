@@ -6,6 +6,8 @@ var session  = require('express-session');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var morgan = require('morgan');
+var passport = require('passport');
+var flash    = require('connect-flash');
 // allows access to info in .env file
 require("dotenv").config();
 
@@ -55,7 +57,7 @@ app.get("/register", (req,res)=> {
     res.render("register", {title: "Register"});
 });
 
-app.get("/dashboard", (req, res)=> {
+app.get("/profile", (req, res)=> {
     res.render("dashboard");
 });
 
