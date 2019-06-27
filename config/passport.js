@@ -4,7 +4,9 @@ var LocalStrategy   = require('passport-local').Strategy;
 // load up the user model
 var mysql = require('mysql');
 var bcrypt = require('bcrypt-nodejs');
+
 var connection = require('./connection');
+
 // expose this function to our app using module.exports
 module.exports = function(passport) {
 
@@ -21,6 +23,7 @@ module.exports = function(passport) {
 
     // used to deserialize the user
     passport.deserializeUser(function(id, done) {
+
         connection.query("SELECT * FROM users WHERE id = ? ",[id], function(err, rows){
             done(err, rows[0]);
         });
@@ -70,8 +73,10 @@ module.exports = function(passport) {
                         return done(null, newUserMysql);
                     });
 
+
                 }
             });
+
 
         })
     );
@@ -106,6 +111,8 @@ module.exports = function(passport) {
                 return done(null, rows[0]);
             });
 
+
         })
     );
 };
+
