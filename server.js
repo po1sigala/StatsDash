@@ -66,7 +66,7 @@ app.get("/profile", (req, res)=> {
 app.get("/login", (req, res)=> {
     res.render("login");
 });
-
+// If anything else is typed this will show
 app.get("*", (req, res)=> {
     res.render("index");
 });

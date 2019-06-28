@@ -2,12 +2,10 @@
 .brand-logo{
     margin-left: 15px;
 }
-.material-icons left {
-    font-size: 15px;
-}
 /* Registration */
 #register-container {
     display: flex;
+    width: 100%;
 }
 .register-left-side {
     background-image: url(StatsDash/public/images/image6.jpg);
@@ -33,6 +31,34 @@
 .black {
     color: black;
 }
-/* .white-text {
-    font-color
-} */
+#image1 {
+    width: 500px;
+}
+.parallax-container {
+    width: 100%;
+}
+
+
+/* dashboard */
+h3 {
+    color: white;
+}
+#dashboard-container {
+    display: flex;
+    width: 100%;
+}
+.dashboard-left-side {
+    background: black;
+    height: 100vh;
+    position: relative;
+    width: 70%;
+    /* padding: 120px 120px 100px 120px; */
+}
+.dashboard-right-side {
+    background: grey;
+    height: 100vh;
+    position: relative;
+    width: 30%;
+    /* padding: 120px 120px 100px 120px; */
+}
+

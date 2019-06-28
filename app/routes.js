@@ -80,4 +80,4 @@ function isLoggedIn(req, res, next) {
 
 	// if they aren't redirect them to the home page
 	res.redirect('/');
-
+};
