@@ -29,7 +29,7 @@
 
 /* homepage */
 .black {
-    color: black;
+    color: white;
 }
 #image1 {
     width: 500px;
@@ -51,14 +51,15 @@ h3 {
     background: black;
     height: 100vh;
     position: relative;
-    width: 70%;
-    /* padding: 120px 120px 100px 120px; */
+    width: 75%;
 }
 .dashboard-right-side {
     background: grey;
     height: 100vh;
     position: relative;
-    width: 30%;
-    /* padding: 120px 120px 100px 120px; */
+    width: 25%;
+}
+#myPlayers {
+    margin-top: 10px;
 }
 

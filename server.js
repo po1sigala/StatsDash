@@ -83,5 +83,3 @@ connection.connect(function(err) {
         console.log("App listening on PORT: " + PORT);
     });
 });
-
-// starts our server
