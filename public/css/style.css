@@ -94,7 +94,7 @@ h3 {
 .input-field {
     margin: 30px 15px 30px 10px;
 }
-.page-footer {
+.page-footer2 {
     background-color: #C61856;
 }
 
@@ -104,4 +104,7 @@ h3 {
 }
 .card-smallProfile {
     margin-top: 20px;
+}
+.noMargin {
+    margin-bottom: 0px !important; 
 }
