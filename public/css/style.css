@@ -62,4 +62,21 @@ h3 {
 #myPlayers {
     margin-top: 10px;
 }
+.userProfile {
+    display: inline-block;
+    width: 250px; 
+    background: white;
+    margin: 75px 250px 10px 50px;
+    padding: 50px;
+}
+.teams {
+    display: inline-block;
+    width: 650px;
+    background: white;
+    margin-right: 75px;
+    padding: 50px 80px ;
+    justify-content: space-between;
+}
+
+
 

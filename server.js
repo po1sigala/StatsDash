@@ -28,8 +28,9 @@ app.use(express.static("public"));
 const exphbs = require("express-handlebars");
 app.engine("handlebars", exphbs({ defaultLayout: "main"}));
 app.set("view engine", "handlebars");
-
+// for css and images
 app.use(express.static("public"));
+app.use(express.static('views/images')); 
 
 // set up our express application
 app.use(morgan('dev')); // log every request to the console
