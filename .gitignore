@@ -2,5 +2,5 @@ node_modules/
 .DS_Store
 .env
 .vscode
-schema.sql
-seeds.sql
+finalSchema.sql
+finalSeeds.sql
