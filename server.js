@@ -65,6 +65,9 @@ app.get("/register", (req,res)=> {
 app.get("/profile", (req, res)=> {
     res.render("dashboard");
 });
+app.get("/compare", (req, res)=> {
+    res.render("compare");
+});
 
 app.get("/login", (req, res)=> {
     res.render("login");
