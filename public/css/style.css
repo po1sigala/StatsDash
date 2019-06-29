@@ -2,7 +2,6 @@
     font-family: 'Open Sans', sans-serif;
 }
 
-
 /* nav */
 .brand-logo{
     margin-left: 15px;
@@ -96,6 +95,7 @@ h3 {
 }
 .page-footer2 {
     background-color: #C61856;
+    margin: 0px !important;
 }
 
 /* compare */
@@ -103,8 +103,5 @@ h3 {
     background: black;
 }
 .card-smallProfile {
-    margin-top: 20px;
-}
-.noMargin {
-    margin-bottom: 0px !important; 
+    margin-top: 50px;
 }
