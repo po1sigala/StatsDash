@@ -42,6 +42,7 @@ module.exports = function(passport) {
             usernameField : 'username',
             passwordField : 'password',
             passReqToCallback : true // allows us to pass back the entire request to the callback
+
         },
         function(req, username, password, done) {
             // find a user whose email is the same as the forms email
