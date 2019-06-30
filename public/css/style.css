@@ -159,4 +159,8 @@ h3 {
 .card-smallProfile {
     margin-top: 50px;
 }
-
+/* profile, my roster*/
+.card {
+    margin-top: 20px;
+    margin-left: 20px;
+}
