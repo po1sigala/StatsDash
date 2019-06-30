@@ -26,6 +26,9 @@
     min-height: 100vh;
     justify-content: center;
 }
+.registerPhoto {
+    width: 100%;
+}
 .register-right-side {
     background: black;
     height: 100vh;
