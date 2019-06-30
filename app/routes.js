@@ -57,6 +57,13 @@ module.exports = function(app, passport) {
 	// we will want this protected so you have to be logged in to visit
 	// we will use route middleware to verify this (the isLoggedIn function)
 	app.get('/profile', isLoggedIn, function(req, res) {
+        var user_id = req.user.id
+        // make inner join query here
+        userRoster.getPlayersByUser(user_id, function(players){
+
+        })
+            // then 
+
 		res.render('dashboard.handlebars', {
 			user : req.user // get the user out of session and pass to template
 		});
