@@ -72,6 +72,9 @@ app.get("/compare", (req, res)=> {
 app.get("/login", (req, res)=> {
     res.render("login");
 });
+app.get("/signup", (req, res)=> {
+    res.render("register");
+});
 // If anything else is typed this will show
 app.get("*", (req, res)=> {
     res.render("index");
