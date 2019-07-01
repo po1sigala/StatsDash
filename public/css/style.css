@@ -230,6 +230,10 @@ footer.page-footer {
 
 
 /* dashboard */
+.btn-floating {
+  margin-right: 5px;
+  margin-top: 5px;
+}
 h3 {
     color: white;
 }
