@@ -1,6 +1,7 @@
-{{>header}}
+    {{>header}}
 <div class="compareBackground">
     <div class="row center-align">
+        <h1>Compare Mode</h1>
         <div class="col s12 m6 l3 black">
             <div class="card">
                 <div class="card-image waves-effect waves-block waves-light">
@@ -8,7 +9,14 @@
                 </div>
                 <div class="card-content">
                 <span class="card-title activator grey-text text-darken-4">Player 1<i class="material-icons right">more_vert</i></span>
-                <p><a href="#">Read More</a></p>
+                <div class="row">
+                    <div class="input-field col s6">
+                        <input id="name" type="text" class="validate">
+                        <label class="active" for="first_name2">First and Last Name</label><a class="waves-effect waves-light btn-small"><i class="material-icons right">send</i>Submit</a>
+                    
+                    </div>
+                </div>
+                <p><a href="#">More Stats</a></p>
                 </div>
                 <div class="card-reveal">
                 <span class="card-title grey-text text-darken-4">
@@ -51,7 +59,14 @@
                 </div>
                 <div class="card-content">
                 <span class="card-title activator grey-text text-darken-4">Player 2<i class="material-icons right">more_vert</i></span>
-                <p><a href="#">Read More</a></p>
+                <div class="row">
+                    <div class="input-field col s6">
+                        <input id="name" type="text" class="validate">
+                        <label class="active" for="first_name2">First and Last Name</label><a class="waves-effect waves-light btn-small"><i class="material-icons right">send</i>Submit</a>
+                    
+                    </div>
+                </div>
+                <p><a href="#">More Stats</a></p>
                 </div>
                 <div class="card-reveal">
                 <span class="card-title grey-text text-darken-4">
@@ -94,8 +109,15 @@
                 <img class="activator" src="/images/image7.jpg">
                 </div>
                 <div class="card-content">
-                <span class="card-title activator grey-text text-darken-4">Player 1<i class="material-icons right">more_vert</i></span>
-                <p><a href="#">Read More</a></p>
+                <span class="card-title activator grey-text text-darken-4">Player 3<i class="material-icons right">more_vert</i></span>
+                <div class="row">
+                    <div class="input-field col s6">
+                        <input id="name" type="text" class="validate">
+                        <label class="active" for="first_name2">First and Last Name</label><a class="waves-effect waves-light btn-small"><i class="material-icons right">send</i>Submit</a>
+                    
+                    </div>
+                </div>
+                <p><a href="#">More Stats</a></p>
                 </div>
                 <div class="card-reveal">
                 <span class="card-title grey-text text-darken-4">
@@ -138,8 +160,15 @@
                 <img class="activator" src="/images/image7.jpg">
                 </div>
                 <div class="card-content">
-                <span class="card-title activator grey-text text-darken-4">Player 2<i class="material-icons right">more_vert</i></span>
-                <p><a href="#">Read More</a></p>
+                <span class="card-title activator grey-text text-darken-4">Player 4<i class="material-icons right">more_vert</i></span>
+                <div class="row">
+                    <div class="input-field col s6">
+                        <input id="name" type="text" class="validate">
+                        <label class="active" for="first_name2">First and Last Name</label><a class="waves-effect waves-light btn-small"><i class="material-icons right">send</i>Submit</a>
+                    
+                    </div>
+                </div>
+                <p><a href="#">More Stats</a></p>
                 </div>
                 <div class="card-reveal">
                 <span class="card-title grey-text text-darken-4">
@@ -176,13 +205,23 @@
             </div>    
         </div>
     </div>
+    {{>footer}}
 </div>
 
-{{>footer}}
 
 
 
+<!-- jquery library -->
+<script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="crossorigin="anonymous"></script>
+<script>
+// form input
+$(document).ready(function() {
+    M.updateTextFields();
+  });
+</script>
 
+ <!-- Compiled and minified JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
 
 
