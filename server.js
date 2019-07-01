@@ -1,6 +1,6 @@
 // requires express
 const express = require("express");
-const connection = require('./config/connection');
+const connection = require('./config/connection.js');
 // get all the tools we need for authentication 
 
 var session  = require('express-session');
@@ -16,7 +16,7 @@ require("dotenv").config();
 // configuration ===============================================================
 // connect to our database
 
-require('./config/passport')(passport); // pass passport for configuration
+require('./config/passport.js')(passport); // pass passport for configuration
 
 // sets port
 const PORT = process.env.PORT;
@@ -54,32 +54,40 @@ app.use(flash()); // use connect-flash for flash messages stored in session
 
 
 // routing
-app.get("/", (req, res)=> {
-    res.render("index", {title: "Home Page"});
-});
+// app.get("/", (req, res)=> {
+//     console.log(req.user);
+// 	// console.log(isAuthenticated());
+//     res.render("index", {title: "Home Page"});
+// });
 
-app.get("/register", (req,res)=> {
-    res.render("register", {title: "Register"});
-});
+// app.get("/register", (req,res)=> {
+//     console.log(req.user);
+//     res.render("register", {title: "Register"});
+// });
 
-app.get("/profile", (req, res)=> {
-    res.render("dashboard");
-});
-app.get("/compare", (req, res)=> {
-    res.render("compare");
-});
+// app.get("/profile", (req, res)=> {
+//     console.log(req.user);
+//     res.render("dashboard");
+// });
+// app.get("/compare", (req, res)=> {
+//     res.render("compare");
+// });
 
-app.get("/login", (req, res)=> {
-    res.render("login");
-});
-app.get("/signup", (req, res)=> {
-    res.render("register");
-});
-// If anything else is typed this will show
-app.get("*", (req, res)=> {
-    res.render("index");
-});
+// app.get("/login", (req, res)=> {
+//     console.log(req.user);
+//     res.render("login");
+// });
+// app.get("/signup", (req, res)=> {
+//     res.render("register");
+// });
+// // If anything else is typed this will show
+// app.get("*", (req, res)=> {
+//     console.log(req.user);
+//     res.render("index");
+// });
 
+
+require('./app/apiii-routes.js')(app, passport);
 
 require('./app/routes.js')(app, passport); // load our routes and pass in our app and fully configured passport
 

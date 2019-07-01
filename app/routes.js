@@ -1,4 +1,7 @@
 // app/routes.js
+
+var userRoster = require('../models/userRoster.js');
+
 module.exports = function(app, passport) {
 
 	// =====================================
@@ -59,7 +62,7 @@ module.exports = function(app, passport) {
 	app.get('/profile', isLoggedIn, function(req, res) {
         var user_id = req.user.id
         // make inner join query here
-        userRoster.getPlayersByUser(user_id, function(players){
+        userRoster.getRosterByUser(user_id, function(players){
 
         })
             // then 
@@ -68,6 +71,34 @@ module.exports = function(app, passport) {
 			user : req.user // get the user out of session and pass to template
 		});
 	});
+
+
+
+	// // add player to roster
+	// app.post('profile/api/players', isLoggedIn, function(req, res) {
+	// 	var user_id = req.user.id;
+	// 	var player_id = req.body.player_id;
+
+	// 	userRoster.addPlayer(['user_id, player_id'], [user_id, player_id], function(result) {
+	// 		res.json({id: result.insertId});
+	// 	});
+	// });
+
+	// // delete player from roster
+	// app.delete('profile/api/players', isLoggedIn, function(req, res) {
+	// 	var user_id = req.user.id;
+	// 	var player_id = req.player_id;
+
+	// 	var condition = 'user_id = ' + user_id + 'AND player_id = ' + player_id;
+	// 	userRoster.deletePlayer(condition, function(result) {
+	// 		if (result.affectedRows === 0) {
+	// 			return res.status(404).end();
+	// 		} else {
+	// 			res.status(200).end();
+	// 		}
+	// 	});
+	// });
+
 
 	// =====================================
 	// LOGOUT ==============================
