@@ -96,8 +96,10 @@ function printQuestionMarks(num) {
     
           cb(result);
         });
-      }
-  };
+    },
+
+    
+};
   
   // Export the orm object for the model
   module.exports = orm;
