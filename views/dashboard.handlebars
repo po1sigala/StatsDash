@@ -24,12 +24,56 @@
                     <img class="activator" src="/images/image2.jpg">
                     </div>
                     <div class="card-content">
-                    <span class="card-title activator grey-text text-darken-4">Card Title<i class="material-icons right">more_vert</i></span>
-                    <p><a href="#"></a></p>
+                    <span class="card-title activator grey-text text-darken-4">Player Name<i class="material-icons right">more_vert</i></span>
+                        <div class="container">
+                            <!-- Modal Trigger -->
+                            <a class="waves-effect waves-light btn pink darken-1 modal-trigger" href="#demo-modal">Add a Player</a>
+
+                            <!-- Modal Structure -->
+                            <div id="demo-modal" class="modal">
+                                <div class="modal-content">
+                                <h4>Search for a Player by Name</h4>
+                                <div class="wrapper">
+                                    <div class="container">
+                                        <input type="text" class="input" placeholder="Search">
+                                    </div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                <a href="#!" class="modal-action modal-close waves-effect waves-red btn pink darken-1">Close</a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <div class="card-reveal">
                     <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
-                    <p>Here is some more information about this product that is only revealed once clicked on.</p>
+                        <table>
+                        <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Item Name</th>
+                            <th>Item Price</th>
+                        </tr>
+                        </thead>
+
+                        <tbody>
+                        <tr>
+                            <td>Alvin</td>
+                            <td>Eclair</td>
+                            <td>$0.87</td>
+                        </tr>
+                        <tr>
+                            <td>Alan</td>
+                            <td>Jellybean</td>
+                            <td>$3.76</td>
+                        </tr>
+                        <tr>
+                            <td>Jonathan</td>
+                            <td>Lollipop</td>
+                            <td>$7.00</td>
+                        </tr>
+                        </tbody>
+                    </table>
                     </div>
                 </div>
                 <div class="card">
@@ -231,8 +275,9 @@
 <!-- jquery library -->
 <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="crossorigin="anonymous"></script>
 <script>
-
+$(document).ready(function(){
+    $('.modal').modal();
+  })
 </script>
-
  <!-- Compiled and minified JavaScript -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
