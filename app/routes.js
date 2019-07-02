@@ -2,6 +2,8 @@
 
 var userRoster = require('../models/userRoster.js');
 
+var isAuthenticated = require('../config/middleware/isAuthenticated')
+
 module.exports = function(app, passport) {
 
 	// =====================================
@@ -58,8 +60,8 @@ module.exports = function(app, passport) {
 	// PROFILE SECTION =========================
 	// =====================================
 	// we will want this protected so you have to be logged in to visit
-	// we will use route middleware to verify this (the isLoggedIn function)
-	app.get('/profile', isLoggedIn, function(req, res) {
+	// we will use route middleware to verify this (the isAuthenticated function)
+	app.get('/profile', isAuthenticated, function(req, res) {
         var user_id = req.user.id
         // make inner join query here
         userRoster.getRosterByUser(user_id, function(players){
@@ -75,7 +77,7 @@ module.exports = function(app, passport) {
 
 
 	// // add player to roster
-	// app.post('profile/api/players', isLoggedIn, function(req, res) {
+	// app.post('profile/api/players', isAuthenticated, function(req, res) {
 	// 	var user_id = req.user.id;
 	// 	var player_id = req.body.player_id;
 
@@ -85,7 +87,7 @@ module.exports = function(app, passport) {
 	// });
 
 	// // delete player from roster
-	// app.delete('profile/api/players', isLoggedIn, function(req, res) {
+	// app.delete('profile/api/players', isAuthenticated, function(req, res) {
 	// 	var user_id = req.user.id;
 	// 	var player_id = req.player_id;
 
@@ -110,13 +112,13 @@ module.exports = function(app, passport) {
 };
 
 // route middleware to make sure
-function isLoggedIn(req, res, next) {
+// function isAuthenticated(req, res, next) {
 
-	// if user is authenticated in the session, carry on
-	if (req.isAuthenticated())
-		return next();
+// 	// if user is authenticated in the session, carry on
+// 	if (req.isAuthenticated())
+// 		return next();
 
-	// if they aren't redirect them to the home page
-	res.redirect('/');
+// 	// if they aren't redirect them to the home page
+// 	res.redirect('/');
 
-};
+// };

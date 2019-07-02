@@ -53,41 +53,7 @@ app.use(passport.session()); // persistent login sessions
 app.use(flash()); // use connect-flash for flash messages stored in session
 
 
-// routing
-// app.get("/", (req, res)=> {
-//     console.log(req.user);
-// 	// console.log(isAuthenticated());
-//     res.render("index", {title: "Home Page"});
-// });
-
-// app.get("/register", (req,res)=> {
-//     console.log(req.user);
-//     res.render("register", {title: "Register"});
-// });
-
-// app.get("/profile", (req, res)=> {
-//     console.log(req.user);
-//     res.render("dashboard");
-// });
-// app.get("/compare", (req, res)=> {
-//     res.render("compare");
-// });
-
-// app.get("/login", (req, res)=> {
-//     console.log(req.user);
-//     res.render("login");
-// });
-// app.get("/signup", (req, res)=> {
-//     res.render("register");
-// });
-// // If anything else is typed this will show
-// app.get("*", (req, res)=> {
-//     console.log(req.user);
-//     res.render("index");
-// });
-
-
-require('./app/apiii-routes.js')(app, passport);
+require('./app/api-routes.js')(app, passport);
 
 require('./app/routes.js')(app, passport); // load our routes and pass in our app and fully configured passport
 
