@@ -52,10 +52,11 @@ app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions
 app.use(flash()); // use connect-flash for flash messages stored in session
 
+require('./app/html-routes')(app);
 
 require('./app/api-routes.js')(app, passport);
 
-require('./app/routes.js')(app, passport); // load our routes and pass in our app and fully configured passport
+require('./app/auth-routes.js')(app, passport); // load our routes and pass in our app and fully configured passport
 
 connection.connect(function(err) {
     if (err) {
