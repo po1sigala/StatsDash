@@ -3,6 +3,7 @@ var express = require("express");
 var router = express.Router();
 
 var userRoster = require('../models/userRoster.js');
+var searchCompare = require("../models/searchCompare.js");
 
 var isAuthenticated = require('../config/middleware/isAuthenticated');
 
@@ -40,4 +41,18 @@ module.exports = function(app, passport) {
 			}
 		});
 	});
+
+	app.get('/compare/api/players/:player', isAuthenticated, function(req, res) {
+		var player_id = req.params.player;
+		console.log(player_id);
+
+		searchCompare.returnPlayerData(player_id, function(result) {
+			if (err) {
+				throw err;
+			} else {
+				res.json(result)
+			}
+		});
+	});
 };
+

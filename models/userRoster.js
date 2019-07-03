@@ -1,6 +1,6 @@
 var orm = require('../config/orm');
 
-var userActions = {
+var userRoster = {
     // getSinglePlayer: function() {},
     getRosterByUser: function(user_id,cb){
         orm.query(
@@ -33,11 +33,9 @@ var userActions = {
         orm.deleteOne("userRoster", condition, function(res){
             cb(res);
         })
-    },
-
-
+    }
 };
   
   // Export the database functions for the controller (catsController.js).
-  module.exports = userActions;
+  module.exports = userRoster;
   

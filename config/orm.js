@@ -98,6 +98,21 @@ function printQuestionMarks(num) {
         });
     },
 
+    // selectAllLike: function(col, table, vals, condition, cb) {
+    //   var queryString = "SELECT " + col; 
+    //   queryString += " FROM "; 
+    //   queryString += table;
+    //   queryString += " WHERE ";
+    //   queryString += condition;
+
+    //   connection.query(queryString, function(err, result) {
+    //     if (err) {
+    //       throw err;
+    //     }
+
+    //     cb(result);
+    //   });
+    // }
     
 };
   
