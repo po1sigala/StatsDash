@@ -1,7 +1,7 @@
 
 module.exports = function(app) {
     app.get("/", (req, res)=> {
-        res.render("index", {title: "Home Page"});
+        res.render("index", {title: "Home Page" });
     });
 
     app.get("/register", (req,res)=> {
@@ -12,7 +12,8 @@ module.exports = function(app) {
         res.render("dashboard");
     });
     app.get("/compare", (req, res)=> {
-        res.render("compare");
+        var obj = { lino: null }
+        res.render("compare", {obj: JSON.stringify(obj)});
     });
 
     app.get("/login", (req, res)=> {
