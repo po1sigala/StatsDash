@@ -2,15 +2,17 @@ var express = require("express");
 
 var router = express.Router();
 
+
 var userRoster = require('../models/userRoster.js');
 var searchCompare = require("../models/searchCompare.js");
 
-var isAuthenticated = require('../config/middleware/isAuthenticated');
+var isAuthenticated = require("../config/middleware/isAuthenticated");
 
-var passport = require('passport');
-require('../config/passport.js')(passport);
+var passport = require("passport");
+require("../config/passport.js")(passport);
 
 module.exports = function(app, passport) {
+
 	// add player to roster
 	app.post('/profile/api/players/:player', isAuthenticated, function(req, res) {
 		var user_id = req.user.id;
