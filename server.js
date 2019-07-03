@@ -58,6 +58,11 @@ require('./app/api-routes.js')(app, passport);
 
 require('./app/auth-routes.js')(app, passport); // load our routes and pass in our app and fully configured passport
 
+// If any nonexistent route is typed this will show
+app.get("*", (req, res)=> {
+    res.render("index");
+});
+
 connection.connect(function(err) {
     if (err) {
       throw err;

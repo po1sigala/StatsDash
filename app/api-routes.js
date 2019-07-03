@@ -12,7 +12,7 @@ require('../config/passport.js')(passport);
 
 module.exports = function(app, passport) {
 	// add player to roster
-	app.post('profile/api/players/:player', isAuthenticated, function(req, res) {
+	app.post('/profile/api/players/:player', isAuthenticated, function(req, res) {
 		var user_id = req.user.id;
 		console.log(user_id);
 		var player_id = req.params.player;
@@ -24,7 +24,7 @@ module.exports = function(app, passport) {
 	});
 
 	// delete player from roster
-	app.delete('profile/api/players/:player', isAuthenticated, function(req, res) {
+	app.delete('/profile/api/players/:player', isAuthenticated, function(req, res) {
 		var user_id = req.user.id;
 		console.log(user_id);
 		var player_id = req.params.player;
@@ -43,15 +43,13 @@ module.exports = function(app, passport) {
 	});
 
 	app.get('/compare/api/players/:player', isAuthenticated, function(req, res) {
+		// var user_id = req.user.id;
+		
 		var player_id = req.params.player;
 		console.log(player_id);
 
 		searchCompare.returnPlayerData(player_id, function(result) {
-			if (err) {
-				throw err;
-			} else {
-				res.json(result)
-			}
+			res.json(result);
 		});
 	});
 };
