@@ -1,30 +1,28 @@
+var isAuthenticated = require('../config/middleware/isAuthenticated');
+
 
 module.exports = function(app) {
-    app.get("/", (req, res)=> {
-        res.render("index", {title: "Home Page" });
-    });
 
-    app.get("/register", (req,res)=> {
+    app.get("/", (req, res) => {
+        res.render("index", {title: "Home Page"});
+    });
+    app.get("/register", (req,res) => {
         res.render("register", {title: "Register"});
     });
-
-    app.get("/profile", (req, res)=> {
-        res.render("dashboard");
+    app.get("/compare", isAuthenticated, (req, res) => {
+        console.log()
+        res.render("compare");
     });
-    app.get("/compare", (req, res)=> {
-        var obj = { lino: null }
-        res.render("compare", {obj: JSON.stringify(obj)});
-    });
-
-    app.get("/login", (req, res)=> {
+//         TEST VERSION OF ABOVE - ABOVE SHOULD NOW PRODUCE DATA OBJECT
+//         app.get("/compare", (req, res)=> {
+//             var obj = { lino: null }
+//             res.render("compare", {obj: JSON.stringify(obj)});
+//         });
+    app.get("/login", (req, res) => {
         res.render("login");
     });
-    app.get("/signup", (req, res)=> {
+    app.get("/signup", (req, res) => {
         res.render("register");
-    });
-    // If anything else is typed this will show
-    app.get("*", (req, res)=> {
-        res.render("index");
     });
 
 };

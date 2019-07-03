@@ -26,46 +26,47 @@ function objToSql(ob) {
       arr.push(key + "=" + value);
     }
   }
-
-  // translate array of strings to a single comma-separated string
+  
+    // translate array of strings to a single comma-separated string
   return arr.toString();
 }
 
+  
 // Object for all our SQL statement functions.
-var orm = {
-  query: function() {
-    return connection.query.apply(connection, arguments);
-  },
-  selectAll: function(tableInput, cb) {
-    var queryString = "SELECT * FROM " + tableInput + ";";
-    connection.query(queryString, function(err, result) {
-      if (err) {
-        throw err;
-      }
-      cb(result);
-    });
-  },
-  insertOne: function(table, cols, vals, cb) {
+  var orm = {
+    query: function(){
+      return connection.query.apply(connection, arguments);
+    },
+    selectAll: function(tableInput, cb) {
+      var queryString = "SELECT * FROM " + tableInput + ";";
+      connection.query(queryString, function(err, result) {
+        if (err) {
+          throw err;
+        }
+        cb(result);
+     });
+    },
+   insertOne: function(table, cols, vals, cb) {
     var queryString = "INSERT INTO " + table;
-
+  
     queryString += " (";
     queryString += cols.toString();
     queryString += ") ";
     queryString += "VALUES (";
     queryString += printQuestionMarks(vals.length);
     queryString += ") ";
-
+  
     console.log(queryString);
-
+  
     connection.query(queryString, vals, function(err, result) {
-      if (err) {
+        if (err) {
         throw err;
       }
-
+  
       cb(result);
     });
   },
-  // An example of objColVals would be {name: panther, sleepy: true}
+    // An example of objColVals would be {name: panther, sleepy: true}
   updateOne: function(table, objColVals, condition, cb) {
     var queryString = "UPDATE " + table;
 
@@ -73,30 +74,45 @@ var orm = {
     queryString += objToSql(objColVals);
     queryString += " WHERE ";
     queryString += condition;
-
+  
     console.log(queryString);
     connection.query(queryString, function(err, result) {
       if (err) {
         throw err;
       }
-
-      cb(result);
-    });
-  },
-
-  deleteOne: function(table, condition, cb) {
-    var queryString = "DELETE FROM " + table;
-    queryString += " WHERE ";
-    queryString += condition;
-
-    connection.query(queryString, function(err, result) {
-      if (err) {
-        throw err;
-      }
-
+  
       cb(result);
     });
   }
+  deleteOne: function(table, condition, cb) {
+      var queryString = "DELETE FROM " + table;
+      queryString += " WHERE ";
+      queryString += condition;
+    
+      connection.query(queryString, function(err, result) {
+        if (err) {
+          throw err;
+        }
+    
+        cb(result);
+      });
+  },
+
+  // selectAllLike: function(col, table, vals, condition, cb) {
+  //   var queryString = "SELECT " + col; 
+  //   queryString += " FROM "; 
+  //   queryString += table;
+  //   queryString += " WHERE ";
+  //   queryString += condition;
+
+  //   connection.query(queryString, function(err, result) {
+  //     if (err) {
+  //       throw err;
+  //     }
+
+  //     cb(result);
+  //   });
+  // }
 };
 
 // Export the orm object for the model
