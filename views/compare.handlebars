@@ -1,8 +1,8 @@
-    
 <div class="compareBackground">
     {{>header}}
     <div class="row center-align">
         <h1>Compare Mode</h1>
+        
         <div class="input-field col s12">
           <i class="material-icons prefix">textsms</i>
           <input type="text" id="autocomplete-input" class="autocomplete">
@@ -40,210 +40,97 @@
                         </tr>
                         </thead>
 
-                        <tbody>
-                        <tr>
-                            <td>Alvin</td>
-                            <td>Eclair</td>
-                            <td>$0.87</td>
-                        </tr>
-                        <tr>
-                            <td>Alan</td>
-                            <td>Jellybean</td>
-                            <td>$3.76</td>
-                        </tr>
-                        <tr>
-                            <td>Jonathan</td>
-                            <td>Lollipop</td>
-                            <td>$7.00</td>
-                        </tr>
-                        </tbody>
-                    </table>
-                    <i class="material-icons right">close</i></span>
-                <p>Here is some more information about this product that is only revealed once clicked on.</p>
+        <form action="#">
+            <div class="file-field input-field">
+
+
+                <div class="file-path-wrapper">
+                    <input class="file-path validate" type="text" placeholder="Search a Player by Name">
                 </div>
-            </div> 
+            </div>
+        </form>
+        <div class="row center-align">
+            <div class="btn search-Btn">
+                <span>Search</span>
+
+            </div>
         </div>
-        <div class="col s12 m6 l3 black">
+        <div class="row center-align searchRow"></div>
+
+        {{!-- <div class="col s12 m6 l3 black">
             <div class="card">
                 <div class="card-image waves-effect waves-block waves-light">
-                <img class="activator" src="/images/image7.jpg">
+                    <img class="activator" src="/images/image7.jpg">
                 </div>
                 <div class="card-content">
-                <span class="card-title activator grey-text text-darken-4">Player 2<i class="material-icons right">more_vert</i></span>
-                <div class="row">
-                  <div class="input-field col s6">
-                        <input class="fontColor" id="name" type="text">
-                        <label class="active" for="first_name2">First and Last Name</label>
-                        <input class="fontColor" id="name" type="text" class="validate">
+                    <span class="card-title activator grey-text text-darken-4">Player 1<i
+                            class="material-icons right">more_vert</i></span>
+                    <div class="row">
+                        <div class="input-field col s6">
+                            <input class="fontColor" id="name" type="text">
+                            <label class="active" for="first_name2">First and Last Name</label>
+                            <input class="fontColor" id="name" type="text" class="validate">
+                        </div>
+                        <div class="input-field col s6">
+                            <input class="fontColor" id="name" type="text">
+                            <label class="active" for="first_name2">First and Last Name</label>
+                            <input class="fontColor" id="name" type="text" class="validate">
+                        </div>
                     </div>
-                    <div class="input-field col s6">
-                        <input class="fontColor" id="name" type="text">
-                        <label class="active" for="first_name2">First and Last Name</label>
-                        <input class="fontColor" id="name" type="text" class="validate">
-                    </div>
-                </div>
-                <p><a href="#">More Stats</a></p>
+                    <p><a href="#">More Stats</a></p>
                 </div>
                 <div class="card-reveal">
-                <span class="card-title grey-text text-darken-4">
-                    <table>
-                        <thead>
-                        <tr>
-                            <th>Name</th>
-                            <th>Item Name</th>
-                            <th>Item Price</th>
-                        </tr>
-                        </thead>
+                    <span class="card-title grey-text text-darken-4">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Item Name</th>
+                                    <th>Item Price</th>
+                                </tr>
+                            </thead>
 
-                        <tbody>
-                        <tr>
-                            <td>Alvin</td>
-                            <td>Eclair</td>
-                            <td>$0.87</td>
-                        </tr>
-                        <tr>
-                            <td>Alan</td>
-                            <td>Jellybean</td>
-                            <td>$3.76</td>
-                        </tr>
-                        <tr>
-                            <td>Jonathan</td>
-                            <td>Lollipop</td>
-                            <td>$7.00</td>
-                        </tr>
-                        </tbody>
-                    </table>
-            
-                    <i class="material-icons right">close</i></span>
-                <p>Here is some more information about this product that is only revealed once clicked on.</p>
+                            <tbody>
+                                <tr>
+                                    <td>Alvin</td>
+                                    <td>Eclair</td>
+                                    <td>$0.87</td>
+                                </tr>
+                                <tr>
+                                    <td>Alan</td>
+                                    <td>Jellybean</td>
+                                    <td>$3.76</td>
+                                </tr>
+                                <tr>
+                                    <td>Jonathan</td>
+                                    <td>Lollipop</td>
+                                    <td>$7.00</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <i class="material-icons right">close</i>
+                    </span>
+                    <p>Here is some more information about this product that is only revealed once clicked on.</p>
                 </div>
-            </div>    
-        </div>
-        <div class="col s12 m6 l3 black">
-            <div class="card">
-                <div class="card-image waves-effect waves-block waves-light">
-                <img class="activator" src="/images/image7.jpg">
-                </div>
-                <div class="card-content">
-                <span class="card-title activator grey-text text-darken-4">Player 3<i class="material-icons right">more_vert</i></span>
-                <div class="row">
-                    <div class="input-field col s6">
-                        <input class="fontColor" id="name" type="text">
-                        <label class="active" for="first_name2">First and Last Name</label>
-                        <input class="fontColor" id="name" type="text" class="validate">
-                    </div>
-                    <div class="input-field col s6">
-                        <input class="fontColor" id="name" type="text">
-                        <label class="active" for="first_name2">First and Last Name</label>
-                        <input class="fontColor" id="name" type="text" class="validate">
-                    </div>
-                </div>
-                <p><a href="#">More Stats</a></p>
-                </div>
-                <div class="card-reveal">
-                <span class="card-title grey-text text-darken-4">
-                    <table>
-                        <thead>
-                        <tr>
-                            <th>Name</th>
-                            <th>Item Name</th>
-                            <th>Item Price</th>
-                        </tr>
-                        </thead>
-
-                        <tbody>
-                        <tr>
-                            <td>Alvin</td>
-                            <td>Eclair</td>
-                            <td>$0.87</td>
-                        </tr>
-                        <tr>
-                            <td>Alan</td>
-                            <td>Jellybean</td>
-                            <td>$3.76</td>
-                        </tr>
-                        <tr>
-                            <td>Jonathan</td>
-                            <td>Lollipop</td>
-                            <td>$7.00</td>
-                        </tr>
-                        </tbody>
-                    </table>
-            
-                    <i class="material-icons right">close</i></span>
-                <p>Here is some more information about this product that is only revealed once clicked on.</p>
-                </div>
-            </div> 
-        </div>
-        <div class="col s12 m6 l3 black">
-            <div class="card">
-                <div class="card-image waves-effect waves-block waves-light">
-                <img class="activator" src="/images/image7.jpg">
-                </div>
-                <div class="card-content">
-                <span class="card-title activator grey-text text-darken-4">Player 4<i class="material-icons right">more_vert</i></span>
-                <div class="row">
-                    <div class="input-field col s6">
-                        <input class="fontColor" id="name" type="text">
-                        <label class="active" for="first_name2">First and Last Name</label>
-                        <input class="fontColor" id="name" type="text" class="validate">
-                    </div>
-                    <div class="input-field col s6">
-                        <input class="fontColor" id="name" type="text">
-                        <label class="active" for="first_name2">First and Last Name</label>
-                        <input class="fontColor" id="name" type="text" class="validate">
-                    </div>
-                </div>
-                <p><a href="#">More Stats</a></p>
-                </div>
-                <div class="card-reveal">
-                <span class="card-title grey-text text-darken-4">
-                    <table>
-                        <thead>
-                        <tr>
-                            <th>Name</th>
-                            <th>Item Name</th>
-                            <th>Item Price</th>
-                        </tr>
-                        </thead>
-
-                        <tbody>
-                        <tr>
-                            <td>Alvin</td>
-                            <td>Eclair</td>
-                            <td>$0.87</td>
-                        </tr>
-                        <tr>
-                            <td>Alan</td>
-                            <td>Jellybean</td>
-                            <td>$3.76</td>
-                        </tr>
-                        <tr>
-                            <td>Jonathan</td>
-                            <td>Lollipop</td>
-                            <td>$7.00</td>
-                        </tr>
-                        </tbody>
-                    </table>
-                    <i class="material-icons right">close</i></span>
-                <p>Here is some more information about this product that is only revealed once clicked on.</p>
-                </div>
-            </div>    
-        </div>
+            </div>
+        </div> --}}
     </div>
-     <div class="row center-align">
-        <a class="waves-effect waves-light btn-large"><i class="material-icons right">send</i>Search</a>
-    </div>
+
     {{>footer}}
-   
+
 </div>
 
 
-
+<div class="carddiv">
+    <div class="cardimage"></div>
+    <div class="row"></div>
+</div>
 
 <!-- jquery library -->
-<script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+    crossorigin="anonymous"></script>
 <script>
+
 // form input
 $(document).ready(function() {
     M.updateTextFields();
@@ -252,26 +139,8 @@ $(document).ready(function() {
       data: {{{ obj }}},
     });
   });
+
 </script>
 
- <!-- Compiled and minified JavaScript -->
+<!-- Compiled and minified JavaScript -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
