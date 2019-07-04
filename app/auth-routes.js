@@ -65,13 +65,17 @@ module.exports = function(app, passport) {
         var user_id = req.user.id
         // make inner join query here
         userRoster.getRosterByUser(user_id, function(players){
+			var hbsObject = {
+				team: players
+			};
 
+			console.log(hbsObject);
         })
             // then 
-
 		res.render('dashboard.handlebars', {
 			user : req.user // get the user out of session and pass to template
 		});
+		console.log(req.user.id);
 	});
 
 	// =====================================

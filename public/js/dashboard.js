@@ -1,4 +1,6 @@
+
 //compare search route /compare/api/players/:player
+
 // code for handling form inputs, etc.
 $(document).ready(function() {
     console.log("logic running");
@@ -32,25 +34,47 @@ $(document).ready(function() {
             console.log(res);
             var playergif = res.data[0].images.fixed_height.url;
             //get player performs ajax req to get player info
+
             // return getPlayer(name).then(function(playerInfo) {
             //     console.log("got player");
             // console.log(playerObj);
-
+// fake data for testing
             //delete this player info later it is just fake info that overrides player info until it is built from a response
-            var playerInfo = {
-                name: "lino",
-                full_name: "lino ornelas",
-                position: "G",
-                three_points_pct: 1,
-                two_points_pct: 0.24,
-                free_throws_pct: 0.6,
-                assists_turnover_ratio: 2,
-                plus: 11,
-                minus: 4
-            };
-            buildCard(playergif, playerInfo);
+//             var playerInfo = {
+//                 name: "lino",
+//                 full_name: "lino ornelas",
+//                 position: "G",
+//                 three_points_pct: 1,
+//                 two_points_pct: 0.24,
+//                 free_throws_pct: 0.6,
+//                 assists_turnover_ratio: 2,
+//                 plus: 11,
+//                 minus: 4
+//             };
+//             buildCard(playergif, playerInfo);
+//         });
+//         });
+
+
+            return getPlayer(name).then(function(playerObj) {
+                console.log("got player");
+                console.log(playerObj);
+                //delete this player info later it is just fake info that overrides player info until it is built from a response
+                // var playerInfo = {
+                //     name: "lino",
+                //     full_name: "lino ornelas",
+                //     position: "G",
+                //     three_points_pct: 1,
+                //     two_points_pct: 0.24,
+                //     free_throws_pct: 0.6,
+                //     assists_turnover_ratio: 2,
+                //     plus: 11,
+                //     minus: 4
+                // };
+                // buildCard(playergif, playerInfo);
+            });
         });
-        // });
+
     }
     function getPlayer(name) {
         var queryURL = "/compare/api/players/:" + name;
@@ -58,6 +82,7 @@ $(document).ready(function() {
             url: queryURL,
             method: "GET"
         }).then(function(res) {
+
             console.log("url is " + queryURL);
             console.log("hitting API");
             console.log(res);
@@ -201,11 +226,14 @@ $(document).ready(function() {
                     console.log("making a guard");
                     //first element is the stat we are grabbing from the object. second element is the title we will give it
                     var importantStats = [
+
                         //guards need to shoot well, assist, make ft, make the team function better so plus minus
+
                         [
                             playerInfo.true_shooting_pct,
                             "True shooting percentage"
                         ],
+
                         [playerInfo.free_throws_pct, "FT%"],
                         [playerInfo.assists_turnover_ratio, "assists to T.O."],
                         [playerInfo.plus + "/" + playerInfo.minus, "plus/minus"]
@@ -260,6 +288,18 @@ $(document).ready(function() {
                         var statValue = $("<td>").text(importantStats[i][0]);
                         trBody.append(statValue);
                     }
+
+                case "F" || "F_C":
+                    var importantStats = [
+                        [
+                            playerInfo.true_shooting_pct,
+                            "True shooting percentage"
+                        ],
+                        [playerInfo.free_throws_pct, "FT%"],
+                        [playerInfo.blocks, "Blocks for " + playerInfo.seasson],
+                        []
+                    ];
+
             }
 
             //---------------------------------CREATE DETAILED COLLAPSABLE-------------------------------------

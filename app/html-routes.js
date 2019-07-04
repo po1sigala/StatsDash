@@ -7,8 +7,9 @@ module.exports = function(app) {
     app.get("/register", (req, res) => {
         res.render("register", { title: "Register" });
     });
-    app.get("/compare", (req, res) => {
-        console.log();
+
+    app.get("/compare", isAuthenticated, (req, res) => {
+        // console.log()
         res.render("compare");
     });
     //         TEST VERSION OF ABOVE - ABOVE SHOULD NOW PRODUCE DATA OBJECT
