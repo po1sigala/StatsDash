@@ -10,7 +10,7 @@ module.exports = function(app) {
         res.render("register", {title: "Register"});
     });
     app.get("/compare", isAuthenticated, (req, res) => {
-        console.log()
+        // console.log()
         res.render("compare");
     });
 //         TEST VERSION OF ABOVE - ABOVE SHOULD NOW PRODUCE DATA OBJECT
