@@ -1,7 +1,8 @@
 var orm = require('../config/orm');
 
 var userRoster = {
-    getPlayersByUser: function(user_id,cb){
+    // getSinglePlayer: function() {},
+    getRosterByUser: function(user_id,cb){
         orm.query(
             "select player.* from userRoster INNER JOIN playersBio player ON player.id = userRoster.player_id WHERE userRoster.user_id = ?",
             [user_id],

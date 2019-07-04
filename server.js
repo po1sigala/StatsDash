@@ -1,6 +1,6 @@
 // requires express
 const express = require("express");
-const connection = require('./config/connection');
+const connection = require('./config/connection.js');
 // get all the tools we need for authentication 
 
 var session  = require('express-session');
@@ -16,7 +16,7 @@ require("dotenv").config();
 // configuration ===============================================================
 // connect to our database
 
-require('./config/passport')(passport); // pass passport for configuration
+require('./config/passport.js')(passport); // pass passport for configuration
 
 // sets port
 const PORT = process.env.PORT;
@@ -52,33 +52,16 @@ app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions
 app.use(flash()); // use connect-flash for flash messages stored in session
 
+require('./app/html-routes')(app);
 
-// routing
-app.get("/", (req, res)=> {
-    res.render("index", {title: "Home Page"});
-});
+require('./app/api-routes.js')(app, passport);
 
-app.get("/register", (req,res)=> {
-    res.render("register", {title: "Register"});
-});
+require('./app/auth-routes.js')(app, passport); // load our routes and pass in our app and fully configured passport
 
-app.get("/profile", (req, res)=> {
-    res.render("dashboard");
-});
-app.get("/compare", (req, res)=> {
-    res.render("compare");
-});
-
-app.get("/login", (req, res)=> {
-    res.render("login");
-});
-// If anything else is typed this will show
+// If any nonexistent route is typed this will show
 app.get("*", (req, res)=> {
     res.render("index");
 });
-
-
-require('./app/routes.js')(app, passport); // load our routes and pass in our app and fully configured passport
 
 connection.connect(function(err) {
     if (err) {
@@ -90,3 +73,4 @@ connection.connect(function(err) {
         console.log("App listening on PORT: " + PORT);
     });
 });
+ 

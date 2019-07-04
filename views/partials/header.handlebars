@@ -1,12 +1,24 @@
     <!---navbar --->
     <nav>
      <div class="nav-wrapper">
-        <a href="#!" class="brand-logo">StatsDash</a>
+        <a href="/" class="brand-logo">StatsDash</a>
             <ul class="right hide-on-med-and-down">
 
                 <li><a href="/login"><i class="material-icons left">view_module</i>Dashboard</a></li>
-                <li><a href="/signup"><i class="material-icons right">plus_one</i>Register</a></li>
+                <li class="search"><a href="/login"><i class="material-icons right">search</i>Search</a></li>
+                <li><a href="/compare"><i class="material-icons right">compare_arrows</i>Compare Mode</a></li>
+                <li><a href="/signup"><i class="material-icons right"></i>Register</a></li>
 
             </ul>
      </div>
     </nav>
+    <!-- jquery library -->
+<script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="crossorigin="anonymous"></script>
+<script>
+$(document).ready(function(){
+    $('.modal').modal();
+    $('.search').modal();
+  })
+</script>
+ <!-- Compiled and minified JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>

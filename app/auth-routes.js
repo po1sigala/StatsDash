@@ -1,4 +1,9 @@
 // app/routes.js
+
+var userRoster = require('../models/userRoster.js');
+
+var isAuthenticated = require('../config/middleware/isAuthenticated');
+
 module.exports = function(app, passport) {
 
 	// =====================================
@@ -55,18 +60,22 @@ module.exports = function(app, passport) {
 	// PROFILE SECTION =========================
 	// =====================================
 	// we will want this protected so you have to be logged in to visit
-	// we will use route middleware to verify this (the isLoggedIn function)
-	app.get('/profile', isLoggedIn, function(req, res) {
+	// we will use route middleware to verify this (the isAuthenticated function)
+	app.get('/profile', isAuthenticated, function(req, res) {
         var user_id = req.user.id
         // make inner join query here
-        userRoster.getPlayersByUser(user_id, function(players){
+        userRoster.getRosterByUser(user_id, function(players){
+			var hbsObject = {
+				team: players
+			};
 
+			console.log(hbsObject);
         })
             // then 
-
 		res.render('dashboard.handlebars', {
 			user : req.user // get the user out of session and pass to template
 		});
+		console.log(req.user.id);
 	});
 
 	// =====================================
@@ -79,13 +88,13 @@ module.exports = function(app, passport) {
 };
 
 // route middleware to make sure
-function isLoggedIn(req, res, next) {
+// function isAuthenticated(req, res, next) {
 
-	// if user is authenticated in the session, carry on
-	if (req.isAuthenticated())
-		return next();
+// 	// if user is authenticated in the session, carry on
+// 	if (req.isAuthenticated())
+// 		return next();
 
-	// if they aren't redirect them to the home page
-	res.redirect('/');
+// 	// if they aren't redirect them to the home page
+// 	res.redirect('/');
 
-};
+// };

@@ -1,41 +1,43 @@
-{{>header}}
-<body>
-<!-- registration image on the left  -->
-<div id="register-container">
-    <section class="register-left-side">
-        <img src="../public/images/image9.jpg" alt="">
-    </section>
-<!-- registration form -->
-    <section class="register-right-side">
-        <form name="register" id="register" method="post" action="/signup">
-            <fieldset>
-                <legend class="register-head">Create an account</legend>
-                <p class="register-content">Takes less than a minute</p>
 
-                <span class="register-input register-input-hoshi">
-                    <input type="text" id="username" name="username" size="20" class="register-input-field register-input-field-hoshi">
-                    <label for="username" class="register-input-label register-input-label-hoshi register-input-label-hoshi-color">
-                        <span class="register-input-label-content register-input-label-content-hoshi">Username:</span>
-                    </label>
-                </span>
+<div class="compareBackground">
+    {{>header}}
+    <!-- registration image on the left  -->
+    <div id="register-container">
+        <section class="register-left-side">
+            <img class="registerPhoto"src="/images/image3.jpg" alt="">
+        </section>
+    <!-- registration form -->
+        <section class="register-right-side">
+            <form name="register" id="register" method="post" action="/signup">
+                <fieldset>
+                    <legend class="register-head">Create an account</legend>
+                    <p class="register-content">Takes less than a minute</p>
 
-                <span class="register-input register-input-hoshi">
-                    <input type="password" id="password" name="password" size="20" class="register-input-field register-input-field-hoshi">
-                    <label for="phone" class="register-input-label register-input-label-hoshi register-input-label-hoshi-color">
-                        <span class="register-input-label-content register-input-label-content-hoshi">Password:</span>
-                    </label>
-                </span>
+                    <span class="register-input register-input-hoshi">
+                        <input type="text" id="username" name="username" size="20" class="register-input-field register-input-field-hoshi">
+                        <label for="username" class="register-input-label register-input-label-hoshi register-input-label-hoshi-color">
+                            <span class="register-input-label-content register-input-label-content-hoshi">Username:</span>
+                        </label>
+                    </span>
 
-                <div class="register-sign-up">
-                    <button class="register-sign-up-btn float-left" name="submitted" type="submit">Sign Up</button>
-                    <span><a href="/login">I am already a member</a></span>
-                </div>
-            </fieldset>
-        </form>
-    </section>
+                    <span class="register-input register-input-hoshi">
+                        <input type="password" id="password" name="password" size="20" class="register-input-field register-input-field-hoshi">
+                        <label for="phone" class="register-input-label register-input-label-hoshi register-input-label-hoshi-color">
+                            <span class="register-input-label-content register-input-label-content-hoshi">Password:</span>
+                        </label>
+                    </span>
+
+                    <div class="register-sign-up">
+                        <button class="register-sign-up-btn float-left" name="submitted" type="submit">Sign Up</button>
+                        <span><a href="/login"> Already a member</a></span>
+                    </div>
+                </fieldset>
+            </form>
+        </section>
 </div>  
 
 {{>footer}}
+</div>  
 <!-- jquery library -->
 <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="crossorigin="anonymous"></script>
 <script>
