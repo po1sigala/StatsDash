@@ -4,6 +4,29 @@
 // code for handling form inputs, etc.
 $(document).ready(function() {
     console.log("logic running");
+
+    $('#playerName').autocomplete({
+            source: function (req,res){
+                $.ajax({
+                    url:"/compare/api/players/" + req.player,
+                    dataType:"jsonp",
+                    type: "GET", 
+                    data: {
+                        term: req.player
+                    },
+                    success: function(data){
+                        res (data);
+                        }));
+                    },
+                    error: console.log('error')
+                });
+            },
+            minLength: 2,
+            select: function (event, ui){
+                log("Selected: " + ui.result.value + "aka" + ui.result.id);
+            }
+    });
+
     $(document).on("click", ".search-Btn", function() {
         console.log("clicked");
         var player = $("input").val();
