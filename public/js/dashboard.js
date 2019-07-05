@@ -2,6 +2,36 @@
 
 // code for handling form inputs, etc.
 $(document).ready(function() {
+    $("#playerName").autocomplete(
+        {
+            source: function(req, res) {
+                $.ajax({
+                    url: "/compare/api/players" + req.player,
+                    dataType: "jsonp",
+                    type: "GET",
+                    data: {
+                        term: req.player
+                    }
+                });
+            }
+        },
+        {
+            sucess: function(data) {
+                res(data);
+            }
+        },
+        {
+            minLength: 2
+        },
+        {
+            error: console.log("error")
+        },
+        {
+            select: function(event, ui) {
+                log("Selected: " + ui.result.value + "aka" + ui.result.id);
+            }
+        }
+    );
     console.log("logic running");
     //-------------------------------------------------CLICK EVENTS---------------------------------------------------
     // $(document).on("keypress", function(enter) {
