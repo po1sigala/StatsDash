@@ -3,7 +3,42 @@
 // code for handling form inputs, etc.
 $(document).ready(function() {
     console.log("logic running");
+    //-------------------------------------------------CLICK EVENTS---------------------------------------------------
+    // $(document).on("keypress", function(enter) {
+    //     if (enter.which == 13) {
+    //         event.preventDefault();
+    //         getSearchInfo();
+    //     }
+    // });
     $(document).on("click", ".search-Btn", function() {
+        getSearchInfo();
+    });
+    $(document).on("click", ".addPlayer", function() {
+        //make put request
+        var addId = $(this).attr("id");
+        console.log("id is: " + addId);
+        var newPlayer = {
+            player_id: addId
+        };
+        var queryURL = `/profile/api/players/${addId}`;
+        $.ajax({
+            type: "POST",
+            url: queryURL,
+            data: newPlayer
+        }).then(function() {
+            console.log("new post req made");
+        });
+    });
+    $(document).on("click", ".deletePlayer", function() {
+        //delete card from page
+        $(this)
+            .parent()
+            .parent()
+            .remove();
+    });
+    //-------------------------------------------------END CLICK EVENTS---------------------------------------------------
+    //-----------------------------------------------------------FUNCTIONS------------------------------------------------------------
+    function getSearchInfo() {
         console.log("clicked");
         var player = $("input").val();
         console.log(`you searched ${player}`);
@@ -13,24 +48,7 @@ $(document).ready(function() {
         var id = 6;
         //---------------------------------------------------------------------
         searchPlayer(player, id);
-    });
-    $(document).on("click", ".addPlayer", function() {
-        //make put request
-        // var addId = $(this).attr("id");
-        // console.log("id is: " + addId);
-        // var queryURL = `/profile/api/players/${addId}`;
-        // $.ajax({
-        //     url: queryURL,
-        //     method: "post"
-        // });
-    });
-    $(document).on("click", ".deletePlayer", function() {
-        //delete card from page
-        $(this)
-            .parent()
-            .parent()
-            .remove();
-    });
+    }
     function searchPlayer(name, id) {
         var queryURL =
             "https://api.giphy.com/v1/gifs/search?q=" +
@@ -194,10 +212,15 @@ $(document).ready(function() {
             var playerName = $(
                 "<span class= 'card-title activator grey-text text-darken-4'>"
             ).text(playerInfo[0].position + ": " + playerInfo[0].full_name);
+            //create p tag to hold header
+            var generalHeader = $("<p>").text("General Stats");
             //create div to hold the name and general stats
             var generalInfoDiv = $("<div class='card-content'>");
             //append the name and table that will have stats
-            generalInfoDiv.append(playerName).append(table);
+            generalInfoDiv
+                .append(playerName)
+                .append(generalHeader)
+                .append(table);
             //---------------------------------------UPDTAE LIST INSIDE STATS----------------------------------------------
             //set up switches for the different general player stats based on position g, f, c, f-c, c-f, g-f, f-g
             switch (playerInfo[0].position) {
@@ -306,7 +329,7 @@ $(document).ready(function() {
             var otherStatsBody = $("<div class='collapsible-body'>");
             otherStatsBody.append(otherListItems);
             var otherStatsHeader = $("<div class='collapsible-header'>").text(
-                "In Depth Other:"
+                "Other: fouls, Double Doubles, etc."
             );
             var otherCollapse = $("<li>");
             otherCollapse.append(otherStatsHeader).append(otherStatsBody);
@@ -322,7 +345,7 @@ $(document).ready(function() {
             var defenseStatsBody = $("<div class='collapsible-body'>");
             defenseStatsBody.append(defenseListItems);
             var defenseStatsHeader = $("<div class='collapsible-header'>").text(
-                "In Depth Defense:"
+                "Defense: Blocks, Steals, etc"
             );
             var defenseCollapse = $("<li>");
             defenseCollapse.append(defenseStatsHeader).append(defenseStatsBody);
@@ -344,7 +367,7 @@ $(document).ready(function() {
             offensStatsBody.append(offenseListItems);
             //create div with title for offense stats
             var offenseStatsHeader = $("<div class='collapsible-header'>").text(
-                "In Depth Offense:"
+                "Offense: scoring, assists, etc"
             );
             //append header to li
             var offenseCollapse = $("<li>");
@@ -358,10 +381,11 @@ $(document).ready(function() {
                 .append(offenseCollapse)
                 .append(defenseCollapse)
                 .append(otherCollapse);
+            var detailsHeader = $("<p>").text("In Depth Stats");
             //collapsable row to hold offense/defense stats and player details
             var collapseRow = $("<div class='row col 12'>");
             //append the three divs into one big collapsable
-            collapseRow.append(playerDetailsCollapse);
+            collapseRow.append(detailsHeader).append(playerDetailsCollapse);
             //------------------------------------CREATE CARD WITH ALL NEW ELEMENTS----------------------------------
             //create card div to hold all new elements
             var cardDiv = $("<div class='card playerCard col s12 m2 l3'>");
@@ -383,4 +407,5 @@ $(document).ready(function() {
             alert("Too many players. please delete one :)");
         }
     }
+    //-------------------------------------------------END FUNCTIONS---------------------------------------------------
 });
