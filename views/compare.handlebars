@@ -1,35 +1,39 @@
-<div class="compareBackground">
-    {{>header}}
-    <div class="row center-align">
-        <h1>Compare Mode</h1>
-        <h3>Search for a NBA Player below</h3>
-        <form action="#">
-            <div class="file-field input-field">
+{{>header}}
 
-                <div class="ui-widget">
-                    <input id="playerName" placeholder="Player Name">
+<main>
+    <div class="compareBackground">
+        
+        <div class="row center-align">
+            <h1>Compare Mode</h1>
+            <h3>Search for an NBA player below</h3>
+            <form action="#">
+                <div class="file-field input-field">
+
+                    <div class="ui-widget">
+                        <input id="playerName" placeholder="Player Name...">
+                    </div>
+                </div>
+            </form>
+            <div class="row center-align">
+                <div class="btn search-Btn">
+                    <span>Search</span>
+
                 </div>
             </div>
-        </form>
-        <div class="row center-align">
-            <div class="btn search-Btn">
-                <span>Search</span>
+            <div class="row center-align searchRow"></div>
 
-            </div>
         </div>
-        <div class="row center-align searchRow"></div>
-
     </div>
+</main>
 
-    {{>footer}}
-
-</div>
+{{>footer}}
 
 
-<div class="carddiv">
+
+{{!-- <div class="carddiv">
     <div class="cardimage"></div>
     <div class="row"></div>
-</div>
+</div> --}}
 
 <!-- jquery library -->
 <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="

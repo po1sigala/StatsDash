@@ -1,6 +1,48 @@
 * {
     font-family: 'Open Sans', sans-serif;
 }
+
+html, body {
+  margin: 0;
+  height: 100%;
+  min-height: 100%;
+}
+
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  background-color: #000;
+}
+
+.nba-link {
+  color: gray;
+}
+
+main {
+  flex: 1 0 auto;
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
+}
+
+footer  p {
+  line-height: 0.5rem;
+  /* margin-top: 1;
+  margin-left: 1; */
+  /* margin: auto; */
+  /* margin: 1; */
+}
+
+header,
+footer {
+  flex: none;
+}
+
+/* .user-card-footer {
+  background-color: #a1a6ad;
+} */
+
+
 h1 {
   color: white;
   font-weight: 100;
@@ -237,11 +279,6 @@ p {
   font-size: inherit;
 }
 
-footer.page-footer {
-  margin: 0;
-}
-
-
 /* dashboard */
 .btn-floating {
   margin-right: 5px;
@@ -277,9 +314,13 @@ h3 {
 
 }
 
+.footer-content {
+  margin: 1rem;
+}
+
 .page-footer2 {
     background-color: #C61856;
-    margin: 0px !important;
+    /* margin: 0px !important; */
 }
 
 /* compare */

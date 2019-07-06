@@ -1,11 +1,12 @@
 {{>header}}
 
-    <div class="form-container">
-        <div class="form">
-            <form action="login" id="login" name="login" method="post">
-                <fieldset>
-                    <legend class="login-head">Login</legend>
-                    <p class="login-content">Please login if you're already a member</p>
+    <main>
+        <div class="form-container">
+            <div class="form">
+                <form action="login" id="login" name="login" method="post">
+                    <fieldset>
+                        <legend class="login-head">Login</legend>
+                        <p class="login-content">Please log in if you're already a member of StatsDash</p>
 
                     {{!-- username --}}
                     <div class="border-bottom">
@@ -22,15 +23,19 @@
                     </div>
 
 
-                    {{!-- submit login --}}
-                    <button class="login-btn" type="submit">LOGIN</button>
-                </fieldset>
 
-                <p class="login-content">Are you new to StatsDash?
+                        {{!-- submit login --}}
+                        <button class="login-btn" type="submit">LOGIN</button>
+                    </fieldset>
+
+
+                <p class="login-content">New to StatsDash?
                     <br>
                     <a href="/signup">Register here</a>
                 </p>
             </form>
+
         </div>
-    </div>
+    </main>
+
 {{>footer}}
