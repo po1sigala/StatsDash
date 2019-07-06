@@ -65,4 +65,22 @@ module.exports = function(app, passport) {
             res.json(result);
         });
     });
+    app.get("/search/api/players", function(req, res) {
+        searchCompare.returnPlayerAndId(function(result) {
+            res.json(result);
+        });
+    });
+    app.get("compare/api/autocomplete/:player", function(req, res) {
+        var player = req.params.player;
+        orm.query(
+            "SELECT id, name FROM playersBio WHERE full_name LIKE %?%",
+            [user.input],
+            function(err, data) {
+                if (err) {
+                    throw err;
+                }
+                res.json(data);
+            }
+        );
+    });
 };

@@ -2,36 +2,31 @@
 
 // code for handling form inputs, etc.
 $(document).ready(function() {
+    var autcompleteArray = [];
+    $.ajax({
+        url: "/search/api/players",
+        method: "GET"
+    }).then(function(res) {
+        console.log(res);
+        for (i = 0; i < res.length; i++) {
+            autcompleteArray.push(res[i].full_name);
+        }
+        console.log("made autocomplete array");
+        console.log(autcompleteArray);
+    });
     $("#playerName").autocomplete(
         {
-            source: function(req, res) {
-                $.ajax({
-                    url: "/compare/api/players" + req.player,
-                    dataType: "jsonp",
-                    type: "GET",
-                    data: {
-                        term: req.player
-                    }
-                });
-            }
-        },
-        {
-            sucess: function(data) {
-                res(data);
-            }
+            source: autcompleteArray
         },
         {
             minLength: 2
         },
+
         {
-            error: console.log("error")
-        },
-        {
-            select: function(event, ui) {
-                log("Selected: " + ui.result.value + "aka" + ui.result.id);
-            }
+            select: function(event, ui) {}
         }
     );
+
     console.log("logic running");
     //-------------------------------------------------CLICK EVENTS---------------------------------------------------
     // $(document).on("keypress", function(enter) {
@@ -72,11 +67,10 @@ $(document).ready(function() {
         console.log("clicked");
         var player = $("input").val();
         console.log(`you searched ${player}`);
-        //----------------------------------------------------------!!!!!!!!!!!!-------------------------------------------------------
-        //--------------------------------------CHANGE LATER THIS IS TO TEST UNTIL AUTOCOMPLETE WORKS-------------------------------------------------------
-        //6 will search klay
-        var id = 6;
-        //---------------------------------------------------------------------
+
+        var id = autcompleteArray.indexOf(player) + 1;
+        console.log("id is: " + id);
+
         searchPlayer(player, id);
     }
     function searchPlayer(name, id) {
@@ -255,7 +249,8 @@ $(document).ready(function() {
             //set up switches for the different general player stats based on position g, f, c, f-c, c-f, g-f, f-g
             switch (playerInfo[0].position) {
                 //if they are a guard or guard-forward
-                case "G" || "G-F":
+                case "G":
+                case "G-F":
                     console.log("making a guard");
                     //first element is the stat we are grabbing from the object. second element is the title we will give it
                     var importantStats = [
@@ -286,7 +281,10 @@ $(document).ready(function() {
                         trBody.append(statValue);
                     }
                     break;
-                case "F" || "F_C":
+
+                case "F":
+                case "F-C":
+                case "F-G":
                     console.log("making a Forward");
                     var importantStats = [
                         //forwards need to shoot well, make ft's, play defense, get rebounds
@@ -311,7 +309,8 @@ $(document).ready(function() {
                         trBody.append(statValue);
                     }
                     break;
-                case "C" || "C-F":
+                case "C":
+                case "C-F":
                     console.log("making a center");
                     var importantStats = [
                         //points in paint
@@ -319,6 +318,10 @@ $(document).ready(function() {
                         //rebounds
                         //double double
                         //ft
+                        [playerInfo[0].points_in_paint, "Points From Paint"],
+                        [playerInfo[0].blocks, "Blocks"],
+                        [playerInfo[0].double_doubles, "Double Doubles"],
+                        [playerInfo[0].free_throws_pct, "FT%"]
                     ];
                     for (i = 0; i < importantStats.length; i++) {
                         //store the stat title
@@ -329,20 +332,6 @@ $(document).ready(function() {
                         var statValue = $("<td>").text(importantStats[i][0]);
                         trBody.append(statValue);
                     }
-
-                case "F" || "F_C":
-                    var importantStats = [
-                        [
-                            playerInfo[0].true_shooting_pct,
-                            "True shooting percentage"
-                        ],
-                        [playerInfo[0].free_throws_pct, "FT%"],
-                        [
-                            playerInfo[0].blocks,
-                            "Blocks for " + playerInfo[0].seasson
-                        ],
-                        []
-                    ];
             }
 
             //---------------------------------CREATE DETAILED COLLAPSABLE-------------------------------------
@@ -439,3 +428,51 @@ $(document).ready(function() {
     }
     //-------------------------------------------------END FUNCTIONS---------------------------------------------------
 });
+//------------------------------OLD CODE-------------------
+// $("#playerName").autocomplete(
+//     {
+//         // source: ["klay thompson"]
+//         source: function(req, res) {
+//             console.log(req);
+//             $.ajax(
+//                 {
+//                     url: "/compare/api/players/" + req.player,
+//                     dataType: "jsonp",
+//                     type: "GET",
+//                     data: {
+//                         term: req.player
+//                     }
+//                 },
+//                 {
+//                     success: function(data) {
+//                         res($.map
+//                             (data, function(player){
+//                             return {
+//                                 label: player.label,
+//                                 value: player.value
+//                             };
+//                             })
+//                         );
+//                     }
+//                 },
+//                 {
+//                     error: function(err) {
+//                         console.log(err);
+//                     }
+//                 }
+//             );
+//         }
+//     },
+//     {
+//         minLength: 2
+//     },
+//     {
+//         select: function(event, ui) {
+//             event.preventDefault();
+//             $("#playerName").val(ui.player.label)
+//             console.log(
+//                 "Selected: " + ui.result.value + "aka" + ui.result.id
+//             );
+//         }
+//     }
+// );
