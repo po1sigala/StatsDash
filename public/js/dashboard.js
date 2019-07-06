@@ -1,7 +1,9 @@
 //compare search route /compare/api/players/:player
-
 // code for handling form inputs, etc.
 $(document).ready(function() {
+    console.log("getting roster");
+    buildRoster();
+
     var autcompleteArray = [];
     $.ajax({
         url: "/search/api/players",
@@ -63,6 +65,9 @@ $(document).ready(function() {
     });
     //-------------------------------------------------END CLICK EVENTS---------------------------------------------------
     //-----------------------------------------------------------FUNCTIONS------------------------------------------------------------
+    function buildRoster() {
+        var queryURL = "";
+    }
     function getSearchInfo() {
         console.log("clicked");
         var player = $("input").val();

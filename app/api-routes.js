@@ -54,7 +54,13 @@ module.exports = function(app, passport) {
             }
         });
     });
-
+    //get players in roster
+    app.get("/api/userRoster", isAuthenticated, function(req, res) {
+        var user_id = req.user.id;
+        userRoster.getRosterByUser(user_id, function(result) {
+            res.json(result);
+        });
+    });
     app.get("/compare/api/players/:player", isAuthenticated, function(
         req,
         res
@@ -69,6 +75,7 @@ module.exports = function(app, passport) {
             res.json(result);
         });
     });
+
     app.get("/search/api/players", function(req, res) {
         searchCompare.returnPlayerAndId(function(result) {
             res.json(result);
