@@ -19,7 +19,7 @@ require("dotenv").config();
 require('./config/passport.js')(passport); // pass passport for configuration
 
 // sets port
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 3000;
 // creating an express server
 const app = express();
 
