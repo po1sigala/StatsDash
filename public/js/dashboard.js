@@ -215,7 +215,7 @@ $(document).ready(function() {
             //create delete button
             var deleteButton = $(
                 "<a class='waves-effect waves-light btn-large deletePlayer'>delete</a>"
-            );
+            ).attr("id", playerInfo[0].id);
             //create row to hold buttons
             var buttonsRow = $("<div class='row col 12'>");
             //append buttons to the row
