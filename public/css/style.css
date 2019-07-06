@@ -34,6 +34,15 @@ h1 {
 .registerPhoto {
     width: 100%;
 }
+
+.register-head {
+    text-align: center;
+}
+
+.register-content {
+    text-align: center;
+}
+
 .register-right-side {
     background: black;
     height: 100vh;
@@ -41,6 +50,10 @@ h1 {
     width: 50%;
     color: white;
     padding: 120px 120px 100px 120px;
+}
+
+.register-sign-up {
+  text-align: center;
 }
 /* login */
 
@@ -84,10 +97,10 @@ h1 {
   font-family: 'Dosis', sans-serif;
 }
 
-.border-bottom {
+/* .border-bottom {
   border-bottom: 1px solid #333;
   margin-bottom: 15px;
-}
+} */
 
 .login-user {
   font-family: 'Dosis', sans-serif;
