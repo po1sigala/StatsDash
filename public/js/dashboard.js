@@ -28,6 +28,7 @@ $(document).ready(function() {
     );
 
     console.log("logic running");
+
     //-------------------------------------------------CLICK EVENTS---------------------------------------------------
     // $(document).on("keypress", function(enter) {
     //     if (enter.which == 13) {
@@ -35,6 +36,31 @@ $(document).ready(function() {
     //         getSearchInfo();
     //     }
     // });
+
+
+//     $('#playerName').autocomplete({
+//             source: function (req,res){
+//                 $.ajax({
+//                     url:"/compare/api/players/" + req.player,
+//                     dataType:"jsonp",
+//                     type: "GET", 
+//                     data: {
+//                         term: req.player
+//                     },
+//                     success: function(data){
+//                         res (data);
+//                         }));
+//                     },
+//                     error: console.log('error')
+//                 });
+//             },
+//             minLength: 2,
+//             select: function (event, ui){
+//                 log("Selected: " + ui.result.value + "aka" + ui.result.id);
+//             }
+//     });
+
+
     $(document).on("click", ".search-Btn", function() {
         getSearchInfo();
     });

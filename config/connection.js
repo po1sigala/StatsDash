@@ -23,7 +23,8 @@ require("dotenv").config();
 
 
 
-  var connection = mysql.createConnection(process.env.MYSQL_CONNECTION);
-
-  module.exports = connection;
+// var connection = mysql.createConnection(process.env.JAWSDB_URL) || mysql.createConnection(process.env.MYSQL_CONNECTION);
+var connectionLink = process.env.JAWSDB_URL || process.env.MYSQL_CONNECTION;
+var connection = mysql.createConnection(connectionLink);
+module.exports = connection;
   
