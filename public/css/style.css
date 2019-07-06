@@ -283,6 +283,10 @@ h3 {
 }
 
 /* compare */
+#playerName {
+  color: white;
+  font-size: 18px;
+}
 .compareBackground {
     background: black;
 }
