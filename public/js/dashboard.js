@@ -1,40 +1,84 @@
-
 //compare search route /compare/api/players/:player
 
 // code for handling form inputs, etc.
 $(document).ready(function() {
+    var autcompleteArray = [];
+    $.ajax({
+        url: "/search/api/players",
+        method: "GET"
+    }).then(function(res) {
+        console.log(res);
+        for (i = 0; i < res.length; i++) {
+            autcompleteArray.push(res[i].full_name);
+        }
+        console.log("made autocomplete array");
+        console.log(autcompleteArray);
+    });
+    $("#playerName").autocomplete(
+        {
+            source: autcompleteArray
+        },
+        {
+            minLength: 2
+        },
+
+        {
+            select: function(event, ui) {}
+        }
+    );
+
     console.log("logic running");
 
-    $('#playerName').autocomplete({
-            source: function (req,res){
-                $.ajax({
-                    url:"/compare/api/players/" + req.player,
-                    dataType:"jsonp",
-                    type: "GET", 
-                    data: {
-                        term: req.player
-                    },
-                    success: function(data){
-                        res (data);
-                        }));
-                    },
-                    error: console.log('error')
-                });
-            },
-            minLength: 2,
-            select: function (event, ui){
-                log("Selected: " + ui.result.value + "aka" + ui.result.id);
-            }
-    });
+    //-------------------------------------------------CLICK EVENTS---------------------------------------------------
+    // $(document).on("keypress", function(enter) {
+    //     if (enter.which == 13) {
+    //         event.preventDefault();
+    //         getSearchInfo();
+    //     }
+    // });
+
+
+//     $('#playerName').autocomplete({
+//             source: function (req,res){
+//                 $.ajax({
+//                     url:"/compare/api/players/" + req.player,
+//                     dataType:"jsonp",
+//                     type: "GET", 
+//                     data: {
+//                         term: req.player
+//                     },
+//                     success: function(data){
+//                         res (data);
+//                         }));
+//                     },
+//                     error: console.log('error')
+//                 });
+//             },
+//             minLength: 2,
+//             select: function (event, ui){
+//                 log("Selected: " + ui.result.value + "aka" + ui.result.id);
+//             }
+//     });
+
 
     $(document).on("click", ".search-Btn", function() {
-        console.log("clicked");
-        var player = $("input").val();
-        console.log(`you searched ${player}`);
-        searchPlayer(player);
+        getSearchInfo();
     });
     $(document).on("click", ".addPlayer", function() {
         //make put request
+        var addId = $(this).attr("id");
+        console.log("id is: " + addId);
+        var newPlayer = {
+            player_id: addId
+        };
+        var queryURL = `/profile/api/players/${addId}`;
+        $.ajax({
+            type: "POST",
+            url: queryURL,
+            data: newPlayer
+        }).then(function() {
+            console.log("new post req made");
+        });
     });
     $(document).on("click", ".deletePlayer", function() {
         //delete card from page
@@ -43,10 +87,25 @@ $(document).ready(function() {
             .parent()
             .remove();
     });
-    function searchPlayer(name) {
+    //-------------------------------------------------END CLICK EVENTS---------------------------------------------------
+    //-----------------------------------------------------------FUNCTIONS------------------------------------------------------------
+    function getSearchInfo() {
+        console.log("clicked");
+        var player = $("input").val();
+        console.log(`you searched ${player}`);
+
+        var id = autcompleteArray.indexOf(player) + 1;
+        console.log("id is: " + id);
+
+        searchPlayer(player, id);
+    }
+    function searchPlayer(name, id) {
         var queryURL =
             "https://api.giphy.com/v1/gifs/search?q=" +
+            //-----------------------------------------------------------!!!!!!!!!!!!!!!!------------------------------------
+            //--------------------------------------CHANGE LATER THIS IS TO TEST UNTIL AUTOCOMPLETE WORKS-------------------------------------------------------
             name +
+            //--------------------------------------------------------------------------------------------------
             "&api_key=3QGN2O8Bws9dO6cv6z5FmzS3twWYL4ZZ&limit=10&offset=0&rating=PG-13&lang=en";
 
         $.ajax({
@@ -57,63 +116,27 @@ $(document).ready(function() {
             console.log(res);
             var playergif = res.data[0].images.fixed_height.url;
             //get player performs ajax req to get player info
-
-            // return getPlayer(name).then(function(playerInfo) {
-            //     console.log("got player");
-            // console.log(playerObj);
-// fake data for testing
-            //delete this player info later it is just fake info that overrides player info until it is built from a response
-//             var playerInfo = {
-//                 name: "lino",
-//                 full_name: "lino ornelas",
-//                 position: "G",
-//                 three_points_pct: 1,
-//                 two_points_pct: 0.24,
-//                 free_throws_pct: 0.6,
-//                 assists_turnover_ratio: 2,
-//                 plus: 11,
-//                 minus: 4
-//             };
-//             buildCard(playergif, playerInfo);
-//         });
-//         });
-
-
-            return getPlayer(name).then(function(playerObj) {
-                console.log("got player");
-                console.log(playerObj);
-                //delete this player info later it is just fake info that overrides player info until it is built from a response
-                // var playerInfo = {
-                //     name: "lino",
-                //     full_name: "lino ornelas",
-                //     position: "G",
-                //     three_points_pct: 1,
-                //     two_points_pct: 0.24,
-                //     free_throws_pct: 0.6,
-                //     assists_turnover_ratio: 2,
-                //     plus: 11,
-                //     minus: 4
-                // };
-                // buildCard(playergif, playerInfo);
-            });
+            getPlayer(id, playergif);
         });
-
     }
-    function getPlayer(name) {
-        var queryURL = "/compare/api/players/:" + name;
+    function getPlayer(id, playergif) {
+        var queryURL = "/compare/api/players/" + id;
         $.ajax({
             url: queryURL,
             method: "GET"
-        }).then(function(res) {
-
+        }).then(function(player) {
             console.log("url is " + queryURL);
             console.log("hitting API");
-            console.log(res);
+            console.log(player);
+            console.log("got player");
+            console.log(player[0].full_name);
+
+            buildCard(playergif, player);
         });
     }
     //this function takes a giflink from our giphy query and playerinfo JSON from hitting our own api to dynamically create a card with player stats
     function buildCard(gifLink, playerInfo) {
-        var p = playerInfo;
+        var p = playerInfo[0];
         var offensiveStats = [
             [p.field_goals_made, "FG Made"],
             [p.field_goals_att, "FG Attempted"],
@@ -193,7 +216,9 @@ $(document).ready(function() {
             //create add button
             var addButton = $(
                 "<a class='waves-effect waves-light btn-large addPlayer'>add to Roster</a>"
-            );
+            )
+                //give it an id eqiual to player id for put reqs
+                .attr("id", playerInfo[0].id);
             //create delete button
             var deleteButton = $(
                 "<a class='waves-effect waves-light btn-large deletePlayer'>delete</a>"
@@ -212,7 +237,7 @@ $(document).ready(function() {
             // var keys = Object.keys(playerInfo);
             // console.log(keys[0]);
             //--------------------------------------------------------------------------------------------------------------------------
-            console.log(playerInfo);
+            console.log(playerInfo[0]);
             //------------------------------------------------DIV TO HOLD GENERAL stats-------------------------------------------------------
             //create tags to hold list items
             var trHead = $("<tr>");
@@ -236,30 +261,41 @@ $(document).ready(function() {
             //create span tag holding player name
             var playerName = $(
                 "<span class= 'card-title activator grey-text text-darken-4'>"
-            ).text(playerInfo.position + ": " + playerInfo.full_name);
+            ).text(playerInfo[0].position + ": " + playerInfo[0].full_name);
+            //create p tag to hold header
+            var generalHeader = $("<p>").text("General Stats");
             //create div to hold the name and general stats
             var generalInfoDiv = $("<div class='card-content'>");
             //append the name and table that will have stats
-            generalInfoDiv.append(playerName).append(table);
+            generalInfoDiv
+                .append(playerName)
+                .append(generalHeader)
+                .append(table);
             //---------------------------------------UPDTAE LIST INSIDE STATS----------------------------------------------
             //set up switches for the different general player stats based on position g, f, c, f-c, c-f, g-f, f-g
-            switch (playerInfo.position) {
+            switch (playerInfo[0].position) {
                 //if they are a guard or guard-forward
-                case "G" || "G-F":
+                case "G":
+                case "G-F":
                     console.log("making a guard");
                     //first element is the stat we are grabbing from the object. second element is the title we will give it
                     var importantStats = [
-
                         //guards need to shoot well, assist, make ft, make the team function better so plus minus
 
                         [
-                            playerInfo.true_shooting_pct,
+                            playerInfo[0].true_shooting_pct,
                             "True shooting percentage"
                         ],
 
-                        [playerInfo.free_throws_pct, "FT%"],
-                        [playerInfo.assists_turnover_ratio, "assists to T.O."],
-                        [playerInfo.plus + "/" + playerInfo.minus, "plus/minus"]
+                        [playerInfo[0].free_throws_pct, "FT%"],
+                        [
+                            playerInfo[0].assists_turnover_ratio,
+                            "assists to T.O."
+                        ],
+                        [
+                            playerInfo[0].plus + "/" + playerInfo[0].minus,
+                            "plus/minus"
+                        ]
                     ];
                     for (i = 0; i < importantStats.length; i++) {
                         //store the stat title
@@ -271,17 +307,23 @@ $(document).ready(function() {
                         trBody.append(statValue);
                     }
                     break;
-                case "F" || "F_C":
+
+                case "F":
+                case "F-C":
+                case "F-G":
                     console.log("making a Forward");
                     var importantStats = [
                         //forwards need to shoot well, make ft's, play defense, get rebounds
                         [
-                            playerInfo.true_shooting_pct,
+                            playerInfo[0].true_shooting_pct,
                             "True shooting percentage"
                         ],
-                        [playerInfo.free_throws_pct, "FT%"],
-                        [playerInfo.blocks, "Blocks for " + playerInfo.seasson],
-                        [playerInfo.rebounds, "Boards"]
+                        [playerInfo[0].free_throws_pct, "FT%"],
+                        [
+                            playerInfo[0].blocks,
+                            "Blocks for " + playerInfo[0].seasson
+                        ],
+                        [playerInfo[0].rebounds, "Boards"]
                     ];
                     for (i = 0; i < importantStats.length; i++) {
                         //store the stat title
@@ -293,7 +335,8 @@ $(document).ready(function() {
                         trBody.append(statValue);
                     }
                     break;
-                case "C" || "C-F":
+                case "C":
+                case "C-F":
                     console.log("making a center");
                     var importantStats = [
                         //points in paint
@@ -301,6 +344,10 @@ $(document).ready(function() {
                         //rebounds
                         //double double
                         //ft
+                        [playerInfo[0].points_in_paint, "Points From Paint"],
+                        [playerInfo[0].blocks, "Blocks"],
+                        [playerInfo[0].double_doubles, "Double Doubles"],
+                        [playerInfo[0].free_throws_pct, "FT%"]
                     ];
                     for (i = 0; i < importantStats.length; i++) {
                         //store the stat title
@@ -311,18 +358,6 @@ $(document).ready(function() {
                         var statValue = $("<td>").text(importantStats[i][0]);
                         trBody.append(statValue);
                     }
-
-                case "F" || "F_C":
-                    var importantStats = [
-                        [
-                            playerInfo.true_shooting_pct,
-                            "True shooting percentage"
-                        ],
-                        [playerInfo.free_throws_pct, "FT%"],
-                        [playerInfo.blocks, "Blocks for " + playerInfo.seasson],
-                        []
-                    ];
-
             }
 
             //---------------------------------CREATE DETAILED COLLAPSABLE-------------------------------------
@@ -339,7 +374,7 @@ $(document).ready(function() {
             var otherStatsBody = $("<div class='collapsible-body'>");
             otherStatsBody.append(otherListItems);
             var otherStatsHeader = $("<div class='collapsible-header'>").text(
-                "In Depth Other:"
+                "Other: fouls, Double Doubles, etc."
             );
             var otherCollapse = $("<li>");
             otherCollapse.append(otherStatsHeader).append(otherStatsBody);
@@ -355,7 +390,7 @@ $(document).ready(function() {
             var defenseStatsBody = $("<div class='collapsible-body'>");
             defenseStatsBody.append(defenseListItems);
             var defenseStatsHeader = $("<div class='collapsible-header'>").text(
-                "In Depth Defense:"
+                "Defense: Blocks, Steals, etc"
             );
             var defenseCollapse = $("<li>");
             defenseCollapse.append(defenseStatsHeader).append(defenseStatsBody);
@@ -377,7 +412,7 @@ $(document).ready(function() {
             offensStatsBody.append(offenseListItems);
             //create div with title for offense stats
             var offenseStatsHeader = $("<div class='collapsible-header'>").text(
-                "In Depth Offense:"
+                "Offense: scoring, assists, etc"
             );
             //append header to li
             var offenseCollapse = $("<li>");
@@ -391,10 +426,11 @@ $(document).ready(function() {
                 .append(offenseCollapse)
                 .append(defenseCollapse)
                 .append(otherCollapse);
+            var detailsHeader = $("<p>").text("In Depth Stats");
             //collapsable row to hold offense/defense stats and player details
             var collapseRow = $("<div class='row col 12'>");
             //append the three divs into one big collapsable
-            collapseRow.append(playerDetailsCollapse);
+            collapseRow.append(detailsHeader).append(playerDetailsCollapse);
             //------------------------------------CREATE CARD WITH ALL NEW ELEMENTS----------------------------------
             //create card div to hold all new elements
             var cardDiv = $("<div class='card playerCard col s12 m2 l3'>");
@@ -416,4 +452,53 @@ $(document).ready(function() {
             alert("Too many players. please delete one :)");
         }
     }
+    //-------------------------------------------------END FUNCTIONS---------------------------------------------------
 });
+//------------------------------OLD CODE-------------------
+// $("#playerName").autocomplete(
+//     {
+//         // source: ["klay thompson"]
+//         source: function(req, res) {
+//             console.log(req);
+//             $.ajax(
+//                 {
+//                     url: "/compare/api/players/" + req.player,
+//                     dataType: "jsonp",
+//                     type: "GET",
+//                     data: {
+//                         term: req.player
+//                     }
+//                 },
+//                 {
+//                     success: function(data) {
+//                         res($.map
+//                             (data, function(player){
+//                             return {
+//                                 label: player.label,
+//                                 value: player.value
+//                             };
+//                             })
+//                         );
+//                     }
+//                 },
+//                 {
+//                     error: function(err) {
+//                         console.log(err);
+//                     }
+//                 }
+//             );
+//         }
+//     },
+//     {
+//         minLength: 2
+//     },
+//     {
+//         select: function(event, ui) {
+//             event.preventDefault();
+//             $("#playerName").val(ui.player.label)
+//             console.log(
+//                 "Selected: " + ui.result.value + "aka" + ui.result.id
+//             );
+//         }
+//     }
+// );
