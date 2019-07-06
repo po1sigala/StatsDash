@@ -12,10 +12,11 @@ require("../config/passport.js")(passport);
 
 module.exports = function(app, passport) {
     // add player to roster
-    app.post("/profile/api/players/:player", function(req, res) {
+    app.post("/profile/api/players/:player", isAuthenticated, function(
+        req,
+        res
+    ) {
         // isAuthenticated,
-        console.log(req);
-        console.log("posting");
         var user_id = req.user.id;
         console.log(`user_id`);
         var player_id = req.params.player;
@@ -54,7 +55,10 @@ module.exports = function(app, passport) {
         });
     });
 
-    app.get("/compare/api/players/:player", function(req, res) {
+    app.get("/compare/api/players/:player", isAuthenticated, function(
+        req,
+        res
+    ) {
         // isAuthenticated,
         // var user_id = req.user.id;
 
