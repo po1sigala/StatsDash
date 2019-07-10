@@ -27,22 +27,7 @@
     <script src="https://code.jquery.com/jquery-3.4.1.js"
         integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
     <script>
-        $(document).ready(function () {
-            $('.modal').modal();
-            $(document).on("click", ".deletePlayer", function () {
-                //make delete req
-                var player = $(this).attr("id");
-                console.log("player id is " + player)
-                var queryURL = "/profile/api/players/" + player
-                $.ajax({
-                    url: queryURL,
-                    type: "DELETE"
-                }).then(function () {
-                    console.log("deleted " + player + "from userRoster")
-                })
-
-            })
-        })
     </script>
+    <script src="js/deletePlayer.js"></script>
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
