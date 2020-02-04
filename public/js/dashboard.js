@@ -1,34 +1,6 @@
 //compare search route /compare/api/players/:player
 // code for handling form inputs, etc.
 $(document).ready(function() {
-    console.log("getting roster");
-    buildRoster();
-
-    var autcompleteArray = [];
-    $.ajax({
-        url: "/search/api/players",
-        method: "GET"
-    }).then(function(res) {
-        console.log(res);
-        for (i = 0; i < res.length; i++) {
-            autcompleteArray.push(res[i].full_name);
-        }
-        console.log("made autocomplete array");
-        console.log(autcompleteArray);
-    });
-    $("#playerName").autocomplete(
-        {
-            source: autcompleteArray
-        },
-        {
-            minLength: 2
-        },
-
-        {
-            select: function(event, ui) {}
-        }
-    );
-
     console.log("logic running");
     //-------------------------------------------------CLICK EVENTS---------------------------------------------------
     // $(document).on("keypress", function(enter) {
@@ -40,47 +12,9 @@ $(document).ready(function() {
     $(document).on("click", ".search-Btn", function() {
         getSearchInfo();
     });
-    $(document).on("click", ".addPlayer", function() {
-        //make put request
-        var addId = $(this).attr("id");
-        console.log("id is: " + addId);
-        var newPlayer = {
-            player_id: addId
-        };
-        var queryURL = `/profile/api/players/${addId}`;
-        $.ajax({
-            type: "POST",
-            url: queryURL,
-            data: newPlayer
-        }).then(function() {
-            console.log("new post req made");
-        });
-    });
-    $(document).on("click", ".deletePlayer", function() {
-        //delete card from page
-        $(this)
-            .parent()
-            .parent()
-            .remove();
-    });
+
     //-------------------------------------------------END CLICK EVENTS---------------------------------------------------
     //-----------------------------------------------------------FUNCTIONS------------------------------------------------------------
-    function buildRoster() {
-        console.log("build roster is running");
-        var queryURL = "/api/userRoster";
-        $.ajax({
-            url: queryURL,
-            mehtod: "GET"
-        }).then(function(res) {
-            console.log("the roster response is");
-            console.log(res);
-            for (i = 0; i < res.length; i++) {
-                var id = res[i].id;
-                var name = res[i].full_name;
-                searchPlayer(name, id);
-            }
-        });
-    }
     function getSearchInfo() {
         console.log("clicked");
         var player = $("input").val();
@@ -95,10 +29,7 @@ $(document).ready(function() {
         console.log("searching giphy for " + name);
         var queryURL =
             "https://api.giphy.com/v1/gifs/search?q=" +
-            //-----------------------------------------------------------!!!!!!!!!!!!!!!!------------------------------------
-            //--------------------------------------CHANGE LATER THIS IS TO TEST UNTIL AUTOCOMPLETE WORKS-------------------------------------------------------
             name +
-            //--------------------------------------------------------------------------------------------------
             "&api_key=3QGN2O8Bws9dO6cv6z5FmzS3twWYL4ZZ&limit=10&offset=0&rating=PG-13&lang=en";
 
         $.ajax({
