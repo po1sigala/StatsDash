@@ -1,6 +1,6 @@
 $(document).ready(function() {
+    //delete card from page
     $(document).on("click", ".deletePlayer", function() {
-        //delete card from page
         $(this)
             .parent()
             .parent()

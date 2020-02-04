@@ -1,7 +1,6 @@
 $(document).ready(function() {
     //this file will handle the creation of a detailed player card using gphy for the image and our db for the data
     console.log("logic running");
-    console.log("autocomplete loaded");
 
     var autcompleteArray = [];
     $.ajax({
@@ -27,6 +26,8 @@ $(document).ready(function() {
             select: function(event, ui) {}
         }
     );
+    console.log("autocomplete loaded");
+
     //-------------------------------------------------CLICK EVENTS---------------------------------------------------
     // $(document).on("keypress", function(enter) {
     //     if (enter.which == 13) {
